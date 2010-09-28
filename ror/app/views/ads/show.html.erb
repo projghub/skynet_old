@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ad group:</b>
+  <%= @ad.ad_group.name %>
+</p>
+
+<p>
+  <b>Template type:</b>
+  <%= @ad.template_type.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @ad.title %>
+</p>
+
+<p>
+  <b>Description line1:</b>
+  <%= @ad.description_line1 %>
+</p>
+
+<p>
+  <b>Description line2:</b>
+  <%= @ad.description_line2 %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @ad.description %>
+</p>
+
+<p>
+  <b>Display url:</b>
+  <%= @ad.display_url %>
+</p>
+
+<p>
+  <b>Destination url:</b>
+  <%= @ad.destination_url %>
+</p>
+
+<p>
+  <b>Enabled:</b>
+  <%= @ad.enabled %>
+</p>
+
+
+<%= link_to 'Edit', edit_ad_path(@ad) %> |
+<%= link_to 'Back', ads_path %>

@@ -1,0 +1,25 @@
+<h1>Listing ad_groups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Campaign</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ad_groups.each do |ad_group| %>
+  <tr>
+    <td><%= ad_group.name %></td>
+    <td><%= ad_group.campaign.name %></td>
+    <td><%= link_to 'Show', ad_group %></td>
+    <td><%= link_to 'Edit', edit_ad_group_path(ad_group) %></td>
+    <td><%= link_to 'Destroy', ad_group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ad group', new_ad_group_path %>

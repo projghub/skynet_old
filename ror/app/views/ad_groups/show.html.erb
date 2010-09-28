@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @ad_group.name %>
+</p>
+
+<p>
+  <b>Campaign:</b>
+  <%= @ad_group.campaign.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_ad_group_path(@ad_group) %> |
+<%= link_to 'Back', ad_groups_path %>

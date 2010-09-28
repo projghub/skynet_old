@@ -1,0 +1,53 @@
+<%= form_for(@ad) do |f| %>
+  <% if @ad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
+
+      <ul>
+      <% @ad.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ad_group_id %><br />
+	 <%= f.select :ad_group_id, AdGroup.all.collect{ |ag| [ag.name, ag.id] } %>
+  </div>
+  <div class="field">
+    <%= f.label :template_type_id %><br />
+	 <%= f.select :template_type_id, TemplateType.all.collect{ |tt| [tt.name, tt.id] } %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description_line1 %><br />
+    <%= f.text_field :description_line1 %>
+  </div>
+  <div class="field">
+    <%= f.label :description_line2 %><br />
+    <%= f.text_field :description_line2 %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :display_url %><br />
+    <%= f.text_field :display_url %>
+  </div>
+  <div class="field">
+    <%= f.label :destination_url %><br />
+    <%= f.text_field :destination_url %>
+  </div>
+  <div class="field">
+    <%= f.label :enabled %><br />
+    <%= f.check_box :enabled %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

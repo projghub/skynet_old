@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: false
+
+two:
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: false
