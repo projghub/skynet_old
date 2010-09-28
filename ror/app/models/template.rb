@@ -3,6 +3,6 @@ class Template < ActiveRecord::Base
 	has_many :serving_stats
 
 	def select_ads
-		Ad.order("RAND()").limit(self.positions).all
+		Ad.joins(:ad_group => :campaign).where('ads.enabled = ? and campaigns.enabled = ?', true, true).order("RAND()").limit(self.positions).all
 	end
 end

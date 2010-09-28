@@ -1,0 +1,5 @@
+<div class="sn-block">
+	<% @ads.each do |ad| %>
+		<div class="sn-ad"><%= render :partial => "serve/template_1/ad", :locals => {:ad => ad} %></div>
+	<% end %>
+</div>

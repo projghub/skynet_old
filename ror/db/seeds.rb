@@ -8,4 +8,4 @@
 display = TemplateType.create(:name => "display")
 text = TemplateType.create(:name => "text")
 mobile = TemplateType.create(:name => "mobile")
-Template.create(:type_id => display.id, :name => "Banner", :positions => 3, :width => 468, :height => 60, :file => "serve_ad/template_1/layout")
+Template.create(:type_id => display.id, :name => "Banner", :positions => 3, :width => 468, :height => 60, :file => "serve/template_1/layout")

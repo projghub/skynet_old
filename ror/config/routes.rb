@@ -1,7 +1,7 @@
 Ror::Application.routes.draw do
 
-	match "/serve_ad" => "serve_ad#index"
-	match "/ad_click" => "ad_click#index"
+	match "/serve" => "serve#index"
+	match "/click" => "click#index"
 
 	resources :ads
 

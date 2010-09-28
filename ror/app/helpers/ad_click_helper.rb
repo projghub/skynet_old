@@ -1,2 +1,0 @@
-module AdClickHelper
-end
