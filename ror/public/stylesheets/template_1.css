@@ -1,0 +1,29 @@
+.sn-ad {
+	float: left;
+	margin: 8px;
+	padding: 0;
+	width: 140px;
+	height: 44px;
+	font-size: 11px;
+	overflow: hidden;
+}
+.sn-ad h2 {
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: bold;
+}
+.sn-ad p {
+	color: #999;
+	white-space: nowrap;
+	line-height: 12px;
+}
+.sn-ad:hover p {
+	color: #000;
+}
+.sn-ad a {
+	color: #0000ee;
+	text-decoration: none;
+}
+.sn-ad a:hover {
+	text-decoration: underline;
+}

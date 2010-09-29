@@ -1,5 +1,5 @@
 class ServeController < ApplicationController
-	layout false
+	layout "serve"
 
 	def index
 		@publisher = Publisher.find_by_access_hash_and_enabled params[:pub], true
