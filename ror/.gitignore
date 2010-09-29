@@ -2,6 +2,7 @@
 config/database.yml
 db/*.sqlite3
 log/*.log
+public/javascripts/serve.js
 tmp/**/*
 tmp/restart.txt
 *.swp
