@@ -1,0 +1,22 @@
+strong {
+	font-weight: bold;
+}
+.sn-ad {
+	margin: 5px;
+	padding: 0;
+	width: 290px;
+	height: 40px;
+	font-size: 12px;
+	line-height: 13px;
+	overflow: hidden;
+}
+.sn-ad a {
+	color: #333333;
+	text-decoration: none;
+}
+.sn-ad a .sn-display-url {
+	color: #0000ee;
+}
+.sn-ad a:hover .sn-display-url {
+	text-decoration: underline;
+}
