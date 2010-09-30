@@ -1,7 +1,5 @@
 <?php
 
-	$start = microtime(true);
-
 	include(dirname(__FILE__)."/includes/class.standard.php");
 	include(dirname(__FILE__)."/includes/class.sql.php");
 
@@ -123,15 +121,5 @@
 	} else if($placement->type == "mobile") { //Mobile Placement
 		include(dirname(__FILE__)."/templates/mobile/mobile.php");
 	}
-
-	$end = microtime(true);
-	$time = $end - $start;
-	echo '<br /><br /><br />'.$time;
-
-	$benchmarkSQL = "insert into benchmarks(created_at, load_time, publisher_id, ad_type_id, template_id, placement_id) values(now(), $time, $publisher_id, $ad_type_id, $placement->template_id, $placement->id)";
-	$db->query($benchmarkSQL);
-	echo '<br /><br />'.$benchmarkSQL;
-
-	//echo '<script type="text/javascript">setTimeout("location.reload(true)", 100)</script>';
 
 ?>
