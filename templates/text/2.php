@@ -8,7 +8,7 @@ div#container
 	display: inline-block;  
 	float: none;  
 	color: #000;  
-	max-height: 250px;  
+	max-height: 410px;  
 	text-align: left;  
 	padding: 0;  
 	max-width: 300px;  
@@ -24,14 +24,14 @@ div#container
 
 div#container #format
 {  
-	max-height: 250px;
+	max-height: 410px;
 	width: 300px;
 	left: 0;
 	padding: 0;
 	max-width: 300px;
 	position: absolute;
 	clear: both;
-	height: 250px;
+	height: 410px;
 	border: 0px none #A9A9A9;
 	top: 0;
 	border-radius: 0;
@@ -126,10 +126,10 @@ div#container span
 	<div id="format">
 		<div id="ad-list">
 		
-			<a href="http://localhost/adserver/click.php" target="_blank" onclick="window.open(\'http://localhost/adserver/click.php\');return false;">
+			<a href="/click.php" target="_blank" onclick="window.open('/click.php');return false;">
 				<span class="ad">
 					<span class="ad-image">
-						<img src="http://localhost/adserver/images/text/<?php echo $ads[0][3] ?>" class="ad-image" />
+						<img src="/images/text/<?php echo $ads[0][3] ?>" class="ad-image" />
 					</span>
 					<span class="ad-title"><?php echo $ads[0][1] ?></span>
 					<span class="ad-desc"><?php echo $ads[0][2] ?>&#133;&nbsp;</span>
@@ -137,10 +137,10 @@ div#container span
 				</span>
 			</a>
 			
-			<a href="http://localhost/adserver/click.php" target="_blank" onclick="window.open(\'http://localhost/adserver/click.php\');return false;">
+			<a href="/click.php" target="_blank" onclick="window.open('/click.php');return false;">
 				<span class="ad">
 					<span class="ad-image">
-						<img src="http://localhost/adserver/images/text/<?php echo $ads[1][3] ?>" class="ad-image" />
+						<img src="/images/text/<?php echo $ads[1][3] ?>" class="ad-image" />
 					</span>
 					<span class="ad-title"><?php echo $ads[1][1] ?></span>
 					<span class="ad-desc"><?php echo $ads[1][2] ?>&#133;&nbsp;</span>
@@ -148,10 +148,10 @@ div#container span
 				</span>
 			</a>
 			
-			<a href="http://localhost/adserver/click.php" target="_blank" onclick="window.open(\'http://localhost/adserver/click.php\');return false;">
+			<a href="/click.php" target="_blank" onclick="window.open('/click.php');return false;">
 				<span class="ad">
 					<span class="ad-image">
-						<img src="http://localhost/adserver/images/text/<?php echo $ads[2][3] ?>" class="ad-image" />
+						<img src="/images/text/<?php echo $ads[2][3] ?>" class="ad-image" />
 					</span>
 					<span class="ad-title"><?php echo $ads[2][1] ?></span>
 					<span class="ad-desc"><?php echo $ads[2][2] ?>&#133;&nbsp;</span>
@@ -159,5 +159,28 @@ div#container span
 				</span>
 			</a>
 			
+			<a href="/click.php" target="_blank" onclick="window.open('/click.php');return false;">
+				<span class="ad">
+					<span class="ad-image">
+						<img src="/images/text/<?php echo $ads[3][3] ?>" class="ad-image" />
+					</span>
+					<span class="ad-title"><?php echo $ads[3][1] ?></span>
+					<span class="ad-desc"><?php echo $ads[3][2] ?>&#133;&nbsp;</span>
+					<span class="ad-link"><?php echo $ads[3][4] ?></span>
+				</span>
+			</a>
+			
+			<a href="/click.php" target="_blank" onclick="window.open('/click.php');return false;">
+				<span class="ad">
+					<span class="ad-image">
+						<img src="/images/text/<?php echo $ads[4][3] ?>" class="ad-image" />
+					</span>
+					<span class="ad-title"><?php echo $ads[4][1] ?></span>
+					<span class="ad-desc"><?php echo $ads[4][2] ?>&#133;&nbsp;</span>
+					<span class="ad-link"><?php echo $ads[4][4] ?></span>
+				</span>
+			</a>
+			
+		</div>
 	</div>
 </div>
