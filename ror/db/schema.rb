@@ -40,11 +40,6 @@ ActiveRecord::Schema.define(:version => 20100930223038) do
   add_index "ads", ["template_type_id", "enabled"], :name => "template_type_id_and_enabled_index"
   add_index "ads", ["template_type_id"], :name => "template_type_id_index"
 
-  create_table "ads_publishers", :id => false, :force => true do |t|
-    t.integer "ad_id",        :null => false
-    t.integer "publisher_id", :null => false
-  end
-
   create_table "campaigns", :force => true do |t|
     t.string   "name",       :null => false
     t.boolean  "enabled",    :null => false
@@ -85,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20100930223038) do
   add_index "serving_stats", ["ad_id"], :name => "ad_id_index"
   add_index "serving_stats", ["hash"], :name => "hash_index", :unique => true
   add_index "serving_stats", ["position"], :name => "position_index"
-  add_index "serving_stats", ["publisher_id", "template_id", "ad_id", "position", "time_served"], :name => "lookup_index"
+  add_index "serving_stats", ["publisher_id", "template_id", "ad_id", "position", "time_served"], :name => "lookup_index", :unique => true
   add_index "serving_stats", ["publisher_id"], :name => "publisher_id_index"
   add_index "serving_stats", ["template_id"], :name => "template_id_index"
   add_index "serving_stats", ["time_served"], :name => "time_served_index"

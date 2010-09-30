@@ -17,7 +17,7 @@ class AddInitialIndexes < ActiveRecord::Migration
 		add_index :serving_stats, :position, :name => "position_index"
 		add_index :serving_stats, :time_served, :name => "time_served_index"
 		add_index :serving_stats, :hash, :unique => true, :name => "hash_index"
-		add_index :serving_stats, [:publisher_id, :template_id, :ad_id, :position, :time_served], :name => "lookup_index"
+		add_index :serving_stats, [:publisher_id, :template_id, :ad_id, :position, :time_served], :unique => true, :name => "lookup_index"
 	end
 
 	def self.down
