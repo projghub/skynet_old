@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100928161829) do
+ActiveRecord::Schema.define(:version => 20100930223038) do
 
   create_table "ad_groups", :force => true do |t|
     t.string   "name",        :null => false
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(:version => 20100928161829) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "ad_groups", ["campaign_id"], :name => "campaign_id_index"
 
   create_table "ads", :force => true do |t|
     t.integer  "ad_group_id",       :null => false
@@ -33,6 +35,11 @@ ActiveRecord::Schema.define(:version => 20100928161829) do
     t.datetime "updated_at"
   end
 
+  add_index "ads", ["ad_group_id"], :name => "ad_group_id_index"
+  add_index "ads", ["enabled"], :name => "enabled_index"
+  add_index "ads", ["template_type_id", "enabled"], :name => "template_type_id_and_enabled_index"
+  add_index "ads", ["template_type_id"], :name => "template_type_id_index"
+
   create_table "ads_publishers", :id => false, :force => true do |t|
     t.integer "ad_id",        :null => false
     t.integer "publisher_id", :null => false
@@ -45,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20100928161829) do
     t.datetime "updated_at"
   end
 
+  add_index "campaigns", ["enabled"], :name => "enabled_index"
+
   create_table "publishers", :force => true do |t|
     t.string   "name",         :null => false
     t.string   "website",      :null => false
@@ -55,6 +64,10 @@ ActiveRecord::Schema.define(:version => 20100928161829) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "publishers", ["access_hash", "enabled"], :name => "access_hash_and_enabled_index", :unique => true
+  add_index "publishers", ["access_hash"], :name => "access_hash_index", :unique => true
+  add_index "publishers", ["enabled"], :name => "enabled_index"
 
   create_table "serving_stats", :force => true do |t|
     t.integer  "publisher_id", :null => false
@@ -69,9 +82,19 @@ ActiveRecord::Schema.define(:version => 20100928161829) do
     t.datetime "updated_at"
   end
 
+  add_index "serving_stats", ["ad_id"], :name => "ad_id_index"
+  add_index "serving_stats", ["hash"], :name => "hash_index", :unique => true
+  add_index "serving_stats", ["position"], :name => "position_index"
+  add_index "serving_stats", ["publisher_id", "template_id", "ad_id", "position", "time_served"], :name => "lookup_index"
+  add_index "serving_stats", ["publisher_id"], :name => "publisher_id_index"
+  add_index "serving_stats", ["template_id"], :name => "template_id_index"
+  add_index "serving_stats", ["time_served"], :name => "time_served_index"
+
   create_table "template_types", :force => true do |t|
     t.string "name", :null => false
   end
+
+  add_index "template_types", ["name"], :name => "name_index", :unique => true
 
   create_table "templates", :force => true do |t|
     t.integer  "type_id",    :null => false
@@ -83,5 +106,7 @@ ActiveRecord::Schema.define(:version => 20100928161829) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "templates", ["type_id"], :name => "type_id_index"
 
 end
