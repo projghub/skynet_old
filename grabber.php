@@ -1,14 +1,14 @@
 <?php
-##	header("content-type: application/x-javascript");
 
-	include("C:/www/adserver/includes/class.standard.php");
-	include("C:/www/adserver/includes/class.sql.php");
+	include(dirname(__FILE__)."/includes/class.standard.php");
+	include(dirname(__FILE__)."/includes/class.sql.php");
 
 	## With mod_rewrite or whatever, we should be able to grab the ad type (300x250 text) and the publisher id
 	## Grab ad type and publisher id here
+	$template_id 	= ((int)$_GET["template_id"] > 0) ? (int)$_GET["template_id"] : 1;
 	$publisher_id 	= ((int)$_GET["publisher_id"] > 0) ? (int)$_GET["publisher_id"] : 1;
 	$ad_type_id 	= ((int)$_GET["ad_type_id"] > 0) ? (int)$_GET["ad_type_id"] : 1;
-	
+
 	//VARIABLES WE COULD PASS IN
 	//$publisher_id 	= 1;
 	//$ad_type_id		= 1; //1 == text, 8 == display
@@ -34,8 +34,6 @@
 									
 									WHERE p.publisher_id = '".$publisher_id."' ORDER BY RAND() LIMIT 1");
 	}
-	
-$db->debug();
 
 	## What happens if we don't find a placement?  Do we just return a default/catch all ad
 	## if(!$placement) { WHAT HAPPENS HERE }
@@ -87,9 +85,6 @@ $db->debug();
 
 	}
 
-$db->debug();
-//print_r($ads);
-
 ################
 ###  LOG IMPRESSIONS
 ###  insert the impressions served (for each position, must build the query for how many ads we've shown)
@@ -113,22 +108,18 @@ $db->debug();
 	}
 	$impressionSQL .= " ON DUPLICATE KEY UPDATE total = total + 1";
 
-	//echo $impressionSQL;
 	$db->query($impressionSQL);
-
-##echo "document.write(\"";
 
 ################
 ###  INCLUDE TEMPLATE
 ###  Include the correct template and type
 ################
 	if($placement->type == "text") { //Text Placement
-		include("C:/www/adserver/templates/text/".$placement->template_id.".php");
+		include(dirname(__FILE__)."/templates/text/".$placement->template_id.".php");
 	} else if($placement->type == "display") { //Display/Image Placement
-		include("C:/www/adserver/templates/display/display.php");
+		include(dirname(__FILE__)."/templates/display/display.php");
 	} else if($placement->type == "mobile") { //Mobile Placement
-		include("C:/www/adserver/templates/mobile/mobile.php");
+		include(dirname(__FILE__)."/templates/mobile/mobile.php");
 	}
 
-##echo "\");";
 ?>

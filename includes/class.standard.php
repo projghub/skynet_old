@@ -103,9 +103,9 @@
 			$this->BASEPATH					= "/usr/local/www/data/";
 						
 			//Database Information
-			$this->DB_USER					= "adserving";
-			$this->DB_PASSWORD				= "adservingPa44";
-			$this->DB_NAME					= "adserving";
+			$this->DB_USER					= "root";
+			$this->DB_PASSWORD				= "";
+			$this->DB_NAME					= "slownet";
 			$this->DB_HOST					= "localhost";
 
 			//Authorize.net

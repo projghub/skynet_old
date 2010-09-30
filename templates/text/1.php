@@ -46,7 +46,7 @@ div#container .ad-image
 	text-align: left;
 	width: 104px;
 	float: left;
-	background: url(http://localhost/adserver/images/templates/toggle-drop-shadow.png) no-repeat top left;
+	background: url(/images/templates/toggle-drop-shadow.png) no-repeat top left;
 	height: 80px;
 	margin-right: 9px;
 }
@@ -61,7 +61,7 @@ div#container .ad-link
 
 div#container a:hover .ad 
 {
-	background: url(http://localhost/adserver/images/templates/mockup_toggle_hybrid_highlight.png) no-repeat top left;
+	background: url(/images/templates/mockup_toggle_hybrid_highlight.png) no-repeat top left;
 }
 
 div#container span 
@@ -133,12 +133,12 @@ function toggle_desc_to_title ( ad, offset ) { ad.children[1].style.display="blo
 <div id="container">
 	<div id="format">
 		<div id="ad-list">
-			<img src="http://localhost/adserver/p?var=foo" alt="" style="display:none;" />
+			<img src="/p?var=foo" alt="" style="display:none;" />
 
-			<a href="http://localhost/adserver/click.php" target="_blank" onclick="window.open(\'http://localhost/adserver/click.php\');return false;">
+			<a href="/click.php" target="_blank" onclick="window.open('/click.php');return false;">
 				<span class="ad" onmouseover="toggle_title_to_desc(this)" onmouseout="toggle_desc_to_title(this)">
 					<span class="ad-image">
-						<img src="http://localhost/adserver/images/text/<?php echo $ads[0][3] ?>" class="copy-ad-image" />
+						<img src="/images/text/<?php echo $ads[0][3] ?>" class="copy-ad-image" />
 					</span>
 					<span class="ad-title">
 						<span class="copy-ad-title"><?php echo $ads[0][1] ?></span>
@@ -152,10 +152,10 @@ function toggle_desc_to_title ( ad, offset ) { ad.children[1].style.display="blo
 				</span>
 			</a>
 
-			<a href="http://localhost/adserver/click.php" target="_blank" onclick="window.open(\'http://localhost/adserver/click.php\');return false;">
+			<a href="/click.php" target="_blank" onclick="window.open('/click.php');return false;">
 				<span class="ad" onmouseover="toggle_title_to_desc(this)" onmouseout="toggle_desc_to_title(this)">
 					<span class="ad-image">
-						<img src="http://localhost/adserver/images/text/<?php echo $ads[1][3] ?>" class="copy-ad-image" />
+						<img src="/images/text/<?php echo $ads[1][3] ?>" class="copy-ad-image" />
 					</span>
 					<span class="ad-title">
 						<span class="copy-ad-title"><?php echo $ads[1][1] ?></span>
@@ -169,10 +169,10 @@ function toggle_desc_to_title ( ad, offset ) { ad.children[1].style.display="blo
 				</span>
 			</a>
 			
-			<a href="http://localhost/adserver/click.php" target="_blank" onclick="window.open(\'http://localhost/adserver/click.php\');return false;">
+			<a href="/click.php" target="_blank" onclick="window.open('/click.php');return false;">
 				<span class="ad" onmouseover="toggle_title_to_desc(this)" onmouseout="toggle_desc_to_title(this)">
 					<span class="ad-image">
-						<img src="http://localhost/adserver/images/text/<?php echo $ads[2][3] ?>" class="copy-ad-image" />
+						<img src="/images/text/<?php echo $ads[2][3] ?>" class="copy-ad-image" />
 					</span>
 					<span class="ad-title">
 						<span class="copy-ad-title"><?php echo $ads[2][1] ?></span>
@@ -185,5 +185,6 @@ function toggle_desc_to_title ( ad, offset ) { ad.children[1].style.display="blo
 					</span>
 				</span>
 			</a>
+		</div>
 	</div>
 </div>

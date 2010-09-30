@@ -1,3 +1,3 @@
 <?php
-	echo "<img src=\"http://localhost/adserver/images/display/".$ads[2]."\" />";
+	echo "<img src=\"/images/display/".$ads[2]."\" />";
 ?>
