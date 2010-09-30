@@ -1,9 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   name: MyString
-  status_id: 1
-
-two:
-  name: MyString
-  status_id: 1
+  enabled: true

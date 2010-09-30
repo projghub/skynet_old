@@ -1,17 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   name: MyString
   website: MyString
   phone: MyString
   contact_name: MyString
-  access_hash: MyString
-  enabled: false
-
-two:
-  name: MyString
-  website: MyString
-  phone: MyString
-  contact_name: MyString
-  access_hash: MyString
-  enabled: false
+  access_hash: asdf
+  enabled: true

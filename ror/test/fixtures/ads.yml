@@ -1,6 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+ad1:
+  id: 1
   ad_group_id: 1
   template_type_id: 1
   title: MyString
@@ -9,9 +10,9 @@ one:
   description: MyString
   display_url: MyString
   destination_url: MyString
-  enabled: false
-
-two:
+  enabled: true
+ad2:
+  id: 2
   ad_group_id: 1
   template_type_id: 1
   title: MyString
@@ -20,4 +21,1082 @@ two:
   description: MyString
   display_url: MyString
   destination_url: MyString
-  enabled: false
+  enabled: true
+ad3:
+  id: 3
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad4:
+  id: 4
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad5:
+  id: 5
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad6:
+  id: 6
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad7:
+  id: 7
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad8:
+  id: 8
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad9:
+  id: 9
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad10:
+  id: 10
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad11:
+  id: 11
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad12:
+  id: 12
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad13:
+  id: 13
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad14:
+  id: 14
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad15:
+  id: 15
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad16:
+  id: 16
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad17:
+  id: 17
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad18:
+  id: 18
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad19:
+  id: 19
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad20:
+  id: 20
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad21:
+  id: 21
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad22:
+  id: 22
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad23:
+  id: 23
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad24:
+  id: 24
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad25:
+  id: 25
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad26:
+  id: 26
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad27:
+  id: 27
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad28:
+  id: 28
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad29:
+  id: 29
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad30:
+  id: 30
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad31:
+  id: 31
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad32:
+  id: 32
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad33:
+  id: 33
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad34:
+  id: 34
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad35:
+  id: 35
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad36:
+  id: 36
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad37:
+  id: 37
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad38:
+  id: 38
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad39:
+  id: 39
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad40:
+  id: 40
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad41:
+  id: 41
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad42:
+  id: 42
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad43:
+  id: 43
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad44:
+  id: 44
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad45:
+  id: 45
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad46:
+  id: 46
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad47:
+  id: 47
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad48:
+  id: 48
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad49:
+  id: 49
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad50:
+  id: 50
+  ad_group_id: 1
+  template_type_id: 1
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad51:
+  id: 51
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad52:
+  id: 52
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad53:
+  id: 53
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad54:
+  id: 54
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad55:
+  id: 55
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad56:
+  id: 56
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad57:
+  id: 57
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad58:
+  id: 58
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad59:
+  id: 59
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad60:
+  id: 60
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad61:
+  id: 61
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad62:
+  id: 62
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad63:
+  id: 63
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad64:
+  id: 64
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad65:
+  id: 65
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad66:
+  id: 66
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad67:
+  id: 67
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad68:
+  id: 68
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad69:
+  id: 69
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad70:
+  id: 70
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad71:
+  id: 71
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad72:
+  id: 72
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad73:
+  id: 73
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad74:
+  id: 74
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad75:
+  id: 75
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad76:
+  id: 76
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad77:
+  id: 77
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad78:
+  id: 78
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad79:
+  id: 79
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad80:
+  id: 80
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad81:
+  id: 81
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad82:
+  id: 82
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad83:
+  id: 83
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad84:
+  id: 84
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad85:
+  id: 85
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad86:
+  id: 86
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad87:
+  id: 87
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad88:
+  id: 88
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad89:
+  id: 89
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad90:
+  id: 90
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad91:
+  id: 91
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad92:
+  id: 92
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad93:
+  id: 93
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad94:
+  id: 94
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad95:
+  id: 95
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad96:
+  id: 96
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad97:
+  id: 97
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad98:
+  id: 98
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad99:
+  id: 99
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
+ad100:
+  id: 100
+  ad_group_id: 1
+  template_type_id: 2
+  title: MyString
+  description_line1: MyString
+  description_line2: MyString
+  description: MyString
+  display_url: MyString
+  destination_url: MyString
+  enabled: true
