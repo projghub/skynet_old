@@ -1,0 +1,9 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag "template_2.css" %>
+<% end %>
+<div class="sn-block">
+	<% @ads.each do |ad| %>
+		<div class="sn-ad"><%= render :partial => "serve/template_2/ad", :locals => {:ad => ad} %></div>
+	<% end %>
+	<div class="clear"></div>
+</div>
