@@ -10,7 +10,7 @@ class ServingStat < ActiveRecord::Base
 		position = 0
 		ads.each do |ad|
 			position += 1
-			stat = ServingStat.where("publisher_id = ? AND template_id = ? AND ad_id = ? AND position = ? AND time_served = ?", publisher.id, template.id, ad.id, position, now.to_i).first
+			stat = ServingStat.where("publisher_id = ? AND template_id = ? AND ad_id = ? AND position = ? AND time_served = ?", publisher.id, template.id, ad.id, position, now.to_i).first(:lock => true)
 			if stat.nil?
 				stat = ServingStat.new(:publisher => publisher, :template => template, :ad => ad, :time_served => now, :position => position, :impressions => 0, :clicks => 0)
 				stat.assign_hash
