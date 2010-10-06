@@ -2,7 +2,7 @@ class AuthenticateController < ApplicationController
 	before_filter :session_init, :except => [:login, :logout]
 
 	def login
-		redirect_to "root" if !session[:user_id].nil?
+		redirect_to :controller => "default", :action => "index" if !session[:user_id].nil?
 		if request.post?
 			user = User.authenticate(params[:login][:username], params[:login][:password])
 			if user.nil?
@@ -10,7 +10,7 @@ class AuthenticateController < ApplicationController
 			else
 				session[:user_id] = user.id
 				flash[:notice] = "You have successfully logged in."
-				redirect_to users_path(user)
+				redirect_to :controller => "default", :action => "index"
 			end
 		end
 	end
