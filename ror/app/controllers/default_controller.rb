@@ -1,5 +1,4 @@
-class DefaultController < ApplicationController
-  def index
-  end
-
+class DefaultController < AuthenticateController
+	def index
+	end
 end
