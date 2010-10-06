@@ -6,7 +6,6 @@
     <th>Campaign</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @ad_groups.each do |ad_group| %>
@@ -15,7 +14,6 @@
     <td><%= ad_group.campaign.name %></td>
     <td><%= link_to 'Show', ad_group %></td>
     <td><%= link_to 'Edit', edit_ad_group_path(ad_group) %></td>
-    <td><%= link_to 'Destroy', ad_group, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -13,19 +13,19 @@
 
   <div class="field">
     <%= f.label :account_id %><br />
-    <%= f.text_field :account_id %>
+    <%= f.select :account_id, Account.all.collect{ |a| [a.name, a.id] } %>
   </div>
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label :password_hash %><br />
-    <%= f.text_field :password_hash %>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :salt %><br />
-    <%= f.text_field :salt %>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
     <%= f.label :email %><br />

@@ -5,13 +5,9 @@
     <th>Ad group</th>
     <th>Template type</th>
     <th>Title</th>
-    <th>Description line1</th>
-    <th>Description line2</th>
-    <th>Description</th>
     <th>Display url</th>
     <th>Destination url</th>
-    <th>Enabled</th>
-    <th></th>
+    <th>Enabled?</th>
     <th></th>
     <th></th>
   </tr>
@@ -21,15 +17,11 @@
     <td><%= ad.ad_group.name %></td>
     <td><%= ad.template_type.name %></td>
     <td><%= ad.title %></td>
-    <td><%= ad.description_line1 %></td>
-    <td><%= ad.description_line2 %></td>
-    <td><%= ad.description %></td>
     <td><%= ad.display_url %></td>
     <td><%= ad.destination_url %></td>
-    <td><%= ad.enabled %></td>
+    <td><%= ad.enabled ? "Yes" : "No" %></td>
     <td><%= link_to 'Show', ad %></td>
     <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
-    <td><%= link_to 'Destroy', ad, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -2,22 +2,12 @@
 
 <p>
   <b>Account:</b>
-  <%= @user.account_id %>
+  <%= @user.account.name %>
 </p>
 
 <p>
   <b>Username:</b>
   <%= @user.username %>
-</p>
-
-<p>
-  <b>Password hash:</b>
-  <%= @user.password_hash %>
-</p>
-
-<p>
-  <b>Salt:</b>
-  <%= @user.salt %>
 </p>
 
 <p>
@@ -27,7 +17,7 @@
 
 <p>
   <b>Enabled:</b>
-  <%= @user.enabled %>
+  <%= @user.enabled ? "Yes" : "No" %>
 </p>
 
 

@@ -7,8 +7,7 @@
     <th>Phone</th>
     <th>Contact name</th>
     <th>Access hash</th>
-    <th>Enabled</th>
-    <th></th>
+    <th>Enabled?</th>
     <th></th>
     <th></th>
   </tr>
@@ -20,10 +19,9 @@
     <td><%= publisher.phone %></td>
     <td><%= publisher.contact_name %></td>
     <td><%= publisher.access_hash %></td>
-    <td><%= publisher.enabled %></td>
+    <td><%= publisher.enabled ? "Yes" : "No" %></td>
     <td><%= link_to 'Show', publisher %></td>
     <td><%= link_to 'Edit', edit_publisher_path(publisher) %></td>
-    <td><%= link_to 'Destroy', publisher, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -4,8 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Email</th>
-    <th>Enabled</th>
-    <th></th>
+    <th>Enabled?</th>
     <th></th>
     <th></th>
   </tr>
@@ -14,10 +13,9 @@
   <tr>
     <td><%= account.name %></td>
     <td><%= account.email %></td>
-    <td><%= account.enabled %></td>
+    <td><%= account.enabled ? "Yes" : "No" %></td>
     <td><%= link_to 'Show', account %></td>
     <td><%= link_to 'Edit', edit_account_path(account) %></td>
-    <td><%= link_to 'Destroy', account, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

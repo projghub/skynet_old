@@ -3,8 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Enabled</th>
-    <th></th>
+    <th>Enabled?</th>
     <th></th>
     <th></th>
   </tr>
@@ -12,10 +11,9 @@
 <% @campaigns.each do |campaign| %>
   <tr>
     <td><%= campaign.name %></td>
-    <td><%= campaign.enabled %></td>
+    <td><%= campaign.enabled ? "Yes" : "No" %></td>
     <td><%= link_to 'Show', campaign %></td>
     <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
-    <td><%= link_to 'Destroy', campaign, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
