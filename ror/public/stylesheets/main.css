@@ -59,7 +59,7 @@ p
 {
 	float: left;
 	margin: 0px 0px 15px;
-	color: #ccc;
+	color: #fba;
 	text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
 	font-size: 200%;
 	line-height: 34px;
@@ -115,6 +115,7 @@ p
 #content
 {
 	padding: 20px 20px 40px;
+	min-height: 400px;
 	background-color: #fff;
 	color: #555;
 	border-top: 1px solid #555;
