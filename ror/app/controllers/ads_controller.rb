@@ -1,4 +1,4 @@
-class AdsController < ApplicationController
+class AdsController < AuthenticateController
   # GET /ads
   # GET /ads.xml
   def index

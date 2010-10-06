@@ -2,11 +2,12 @@
 <html>
 	<head>
 		<title>Skynet Ad Serving</title>
-		<%= stylesheet_link_tag :defaults %>
+		<%= stylesheet_link_tag "main" %>
 		<%= javascript_include_tag :defaults %>
 		<%= csrf_meta_tag %>
 	</head>
 	<body>
+		<%= render :partial => "layouts/flash_messages" %>
 
 		<%= yield %>
 

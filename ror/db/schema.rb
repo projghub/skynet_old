@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100930223038) do
+ActiveRecord::Schema.define(:version => 20101005161013) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "email",      :null => false
+    t.boolean  "enabled",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["enabled"], :name => "index_accounts_on_enabled"
 
   create_table "ad_groups", :force => true do |t|
     t.string   "name",        :null => false
@@ -45,8 +55,10 @@ ActiveRecord::Schema.define(:version => 20100930223038) do
     t.boolean  "enabled",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id", :null => false
   end
 
+  add_index "campaigns", ["account_id"], :name => "index_campaigns_on_account_id"
   add_index "campaigns", ["enabled"], :name => "enabled_index"
 
   create_table "publishers", :force => true do |t|
@@ -103,5 +115,20 @@ ActiveRecord::Schema.define(:version => 20100930223038) do
   end
 
   add_index "templates", ["type_id"], :name => "type_id_index"
+
+  create_table "users", :force => true do |t|
+    t.integer  "account_id",    :null => false
+    t.string   "username",      :null => false
+    t.string   "password_hash", :null => false
+    t.string   "salt",          :null => false
+    t.string   "email",         :null => false
+    t.boolean  "enabled",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["account_id"], :name => "index_users_on_account_id"
+  add_index "users", ["username", "enabled"], :name => "index_users_on_username_and_enabled", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

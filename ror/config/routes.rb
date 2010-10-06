@@ -3,6 +3,8 @@ Ror::Application.routes.draw do
 	match "/serve" => "serve#index"
 	match "/javascripts/serve.js" => "serve#js"
 	match "/click" => "click#index"
+	match "/login" => "authenticate#login"
+	match "/logout" => "authenticate#logout"
 
 	resources :ads
 
@@ -11,6 +13,10 @@ Ror::Application.routes.draw do
 	resources :campaigns
 
 	resources :publishers
+
+	resources :users
+
+	resources :accounts
 
 	# The priority is based upon order of creation:
 	# first created -> highest priority.
