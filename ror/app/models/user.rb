@@ -24,6 +24,12 @@ class User < ActiveRecord::Base
 		self.password_hash = hash_password(self.password)
 	end
 
+	def self.authenticate(username, password)
+		user = User.joins(:account).where("users.username = ? AND users.enabled = ? AND accounts.enabled = ?", username, true, true).first rescue nil
+		return nil if user.nil? || !user.password_matches?(password)
+		user
+	end
+
 	def self.hash_password_and_salt(password, salt)
 		Digest::SHA1.hexdigest(salt+password)
 	end

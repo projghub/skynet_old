@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :ad_group_id %><br />
+    <%= f.label :ad_group_id, "Ad Group" %><br />
 	 <%= f.select :ad_group_id, AdGroup.all.collect{ |ag| [ag.name, ag.id] } %>
   </div>
   <div class="field">
-    <%= f.label :template_type_id %><br />
+    <%= f.label :template_type_id, "Template Type" %><br />
 	 <%= f.select :template_type_id, TemplateType.all.collect{ |tt| [tt.name, tt.id] } %>
   </div>
   <div class="field">
@@ -24,11 +24,15 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :description_line1 %><br />
+    <%= f.label :media_url, "Media URL" %><br />
+    <%= f.text_field :media_url %>
+  </div>
+  <div class="field">
+    <%= f.label :description_line1, "Description Line 1" %><br />
     <%= f.text_field :description_line1 %>
   </div>
   <div class="field">
-    <%= f.label :description_line2 %><br />
+    <%= f.label :description_line2, "Description Line 2" %><br />
     <%= f.text_field :description_line2 %>
   </div>
   <div class="field">
@@ -36,11 +40,11 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :display_url %><br />
+    <%= f.label :display_url, "Display URL" %><br />
     <%= f.text_field :display_url %>
   </div>
   <div class="field">
-    <%= f.label :destination_url %><br />
+    <%= f.label :destination_url, "Destination URL" %><br />
     <%= f.text_field :destination_url %>
   </div>
   <div class="field">

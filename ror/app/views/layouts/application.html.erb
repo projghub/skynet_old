@@ -7,8 +7,19 @@
 		<%= csrf_meta_tag %>
 	</head>
 	<body>
+		<div id="container">
+			<div id="header">
+				<div id="page-title">Skynet Advertising Solutions</div>
+				<%= render :partial => "layouts/user" %>
+				<%= render :partial => "layouts/nav" %>
+			</div>
 
-		<%= yield %>
+			<div id="content">
+				<%= render :partial => "layouts/flash_messages" %>
+				<%= yield %>
+			</div>
 
+			<div id="footer">&copy; 2010 <a href="http://www.projectedinc.com">Projected, Inc.</a></div>
+		</div>
 	</body>
 </html>

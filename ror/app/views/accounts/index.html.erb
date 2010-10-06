@@ -1,23 +1,27 @@
-<h1>Listing accounts</h1>
+<h1>Listing Accounts</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Enabled?</th>
-    <th></th>
-    <th></th>
-  </tr>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Enabled?</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
 
-<% @accounts.each do |account| %>
-  <tr>
-    <td><%= account.name %></td>
-    <td><%= account.email %></td>
-    <td><%= account.enabled ? "Yes" : "No" %></td>
-    <td><%= link_to 'Show', account %></td>
-    <td><%= link_to 'Edit', edit_account_path(account) %></td>
-  </tr>
-<% end %>
+	<tbody>
+		<% @accounts.each do |account| %>
+			<tr>
+				<td><%= account.name %></td>
+				<td><%= account.email %></td>
+				<td><%= account.enabled ? "Yes" : "No" %></td>
+				<td><%= link_to 'Show', account %></td>
+				<td><%= link_to 'Edit', edit_account_path(account) %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br />

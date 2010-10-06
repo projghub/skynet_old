@@ -1,0 +1,8 @@
+<div id="user">
+	<% if is_logged_in? %>
+		Hi, <%= link_to User.find(session[:user_id]).username, edit_user_path(User.find(session[:user_id])) %> |
+		<%= link_to "Logout", :controller => "authenticate", :action => "logout" %>
+	<% else %>
+		<%= link_to "Login", :controller => "authenticate", :action => "login" %>
+	<% end %>
+</div>

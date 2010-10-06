@@ -1,29 +1,33 @@
-<h1>Listing publishers</h1>
+<h1>Listing Publishers</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Website</th>
-    <th>Phone</th>
-    <th>Contact name</th>
-    <th>Access hash</th>
-    <th>Enabled?</th>
-    <th></th>
-    <th></th>
-  </tr>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Website</th>
+			<th>Phone</th>
+			<th>Contact Name</th>
+			<th>Access Hash</th>
+			<th>Enabled?</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
 
-<% @publishers.each do |publisher| %>
-  <tr>
-    <td><%= publisher.name %></td>
-    <td><%= publisher.website %></td>
-    <td><%= publisher.phone %></td>
-    <td><%= publisher.contact_name %></td>
-    <td><%= publisher.access_hash %></td>
-    <td><%= publisher.enabled ? "Yes" : "No" %></td>
-    <td><%= link_to 'Show', publisher %></td>
-    <td><%= link_to 'Edit', edit_publisher_path(publisher) %></td>
-  </tr>
-<% end %>
+	<tbody>
+		<% @publishers.each do |publisher| %>
+			<tr>
+				<td><%= publisher.name %></td>
+				<td><%= publisher.website %></td>
+				<td><%= publisher.phone %></td>
+				<td><%= publisher.contact_name %></td>
+				<td><%= publisher.access_hash %></td>
+				<td><%= publisher.enabled ? "Yes" : "No" %></td>
+				<td><%= link_to 'Show', publisher %></td>
+				<td><%= link_to 'Edit', edit_publisher_path(publisher) %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br />

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101005161013) do
+ActiveRecord::Schema.define(:version => 20101006200856) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20101005161013) do
     t.boolean  "enabled",           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "media_url",         :null => false
   end
 
   add_index "ads", ["ad_group_id"], :name => "ad_group_id_index"

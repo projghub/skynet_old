@@ -2,15 +2,15 @@ class AuthenticateController < ApplicationController
 	before_filter :session_init, :except => [:login, :logout]
 
 	def login
+		redirect_to "root" if !session[:user_id].nil?
 		if request.post?
-			user = User.joins(:account).where("users.username = ? AND users.enabled = ? AND accounts.enabled = ?", params[:login][:username], true, true).first rescue nil
-			logger.debug user.inspect
-			if user.nil? || !user.password_matches?(params[:login][:password])
+			user = User.authenticate(params[:login][:username], params[:login][:password])
+			if user.nil?
 				flash[:error] = "We could not authenticate you based on the provided username and password."
 			else
 				session[:user_id] = user.id
 				flash[:notice] = "You have successfully logged in."
-				redirect_to users_path(user.id)
+				redirect_to users_path(user)
 			end
 		end
 	end
@@ -18,7 +18,7 @@ class AuthenticateController < ApplicationController
 	def logout
 		session[:user_id] = nil
 		flash[:notice] = "You have successfully logged out."
-		redirect_to "/index.html" # TODO: Fix logout redirect url.
+		redirect_to :controller => "authenticate", :action => "login"
 	end
 
 	private

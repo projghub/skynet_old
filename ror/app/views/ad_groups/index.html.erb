@@ -1,23 +1,27 @@
-<h1>Listing ad_groups</h1>
+<h1>Listing Ad Groups</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Campaign</th>
-    <th></th>
-    <th></th>
-  </tr>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Campaign</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
 
-<% @ad_groups.each do |ad_group| %>
-  <tr>
-    <td><%= ad_group.name %></td>
-    <td><%= ad_group.campaign.name %></td>
-    <td><%= link_to 'Show', ad_group %></td>
-    <td><%= link_to 'Edit', edit_ad_group_path(ad_group) %></td>
-  </tr>
-<% end %>
+	<tbody>
+		<% @ad_groups.each do |ad_group| %>
+			<tr>
+				<td><%= ad_group.name %></td>
+				<td><%= ad_group.campaign.name %></td>
+				<td><%= link_to 'Show', ad_group %></td>
+				<td><%= link_to 'Edit', edit_ad_group_path(ad_group) %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br />
 
-<%= link_to 'New Ad group', new_ad_group_path %>
+<%= link_to 'New Ad Group', new_ad_group_path %>

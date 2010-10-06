@@ -1,12 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Ad group:</b>
+  <b>Ad Group:</b>
   <%= @ad.ad_group.name %>
 </p>
 
 <p>
-  <b>Template type:</b>
+  <b>Template Type:</b>
   <%= @ad.template_type.name %>
 </p>
 
@@ -16,12 +14,16 @@
 </p>
 
 <p>
-  <b>Description line1:</b>
+  <b>Media URL:</b>
+  <%= @ad.media_url.empty? ? "(none)" : link_to(@ad.media_url, @ad.media_url) %>
+
+<p>
+  <b>Description Line 1:</b>
   <%= @ad.description_line1 %>
 </p>
 
 <p>
-  <b>Description line2:</b>
+  <b>Description Line 2:</b>
   <%= @ad.description_line2 %>
 </p>
 
@@ -31,12 +33,12 @@
 </p>
 
 <p>
-  <b>Display url:</b>
+  <b>Display URL:</b>
   <%= @ad.display_url %>
 </p>
 
 <p>
-  <b>Destination url:</b>
+  <b>Destination URL:</b>
   <%= @ad.destination_url %>
 </p>
 

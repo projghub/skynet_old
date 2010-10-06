@@ -1,25 +1,29 @@
-<h1>Listing users</h1>
+<h1>Listing Users</h1>
 
 <table>
-  <tr>
-    <th>Account</th>
-    <th>Username</th>
-    <th>Email</th>
-    <th>Enabled?</th>
-    <th></th>
-    <th></th>
-  </tr>
+	<thead>
+		<tr>
+			<th>Account</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Enabled?</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.account.name %></td>
-    <td><%= user.username %></td>
-    <td><%= user.email %></td>
-    <td><%= user.enabled ? "Yes" : "No" %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-  </tr>
-<% end %>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.account.name %></td>
+				<td><%= user.username %></td>
+				<td><%= user.email %></td>
+				<td><%= user.enabled ? "Yes" : "No" %></td>
+				<td><%= link_to 'Show', user %></td>
+				<td><%= link_to 'Edit', edit_user_path(user) %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br />
