@@ -3,7 +3,7 @@ require 'digest/sha1'
 class User < ActiveRecord::Base
 	belongs_to :account
 	attr_accessor :password, :password_confirmation
-	attr_protected :password_hash, :salt
+	attr_protected :account_id, :password_hash, :salt
 	validates_presence_of :account_id
 	validates_uniqueness_of :username
 	validates_confirmation_of :password

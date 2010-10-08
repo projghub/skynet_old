@@ -2,7 +2,7 @@ class AdGroupsController < AuthenticateController
 	# GET /ad_groups
 	# GET /ad_groups.xml
 	def index
-		@ad_groups = AdGroup.includes(:campaign).all
+		@ad_groups = AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).all
 
 		respond_to do |format|
 			format.html # index.html.erb
@@ -13,7 +13,7 @@ class AdGroupsController < AuthenticateController
 	# GET /ad_groups/1
 	# GET /ad_groups/1.xml
 	def show
-		@ad_group = AdGroup.find(params[:id])
+		@ad_group = AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 
 		respond_to do |format|
 			format.html # show.html.erb
@@ -34,13 +34,14 @@ class AdGroupsController < AuthenticateController
 
 	# GET /ad_groups/1/edit
 	def edit
-		@ad_group = AdGroup.find(params[:id])
+		@ad_group = AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 	end
 
 	# POST /ad_groups
 	# POST /ad_groups.xml
 	def create
 		@ad_group = AdGroup.new(params[:ad_group])
+		@ad_group.user_account_id = @auth_user.account_id
 
 		respond_to do |format|
 			if @ad_group.save
@@ -56,7 +57,8 @@ class AdGroupsController < AuthenticateController
 	# PUT /ad_groups/1
 	# PUT /ad_groups/1.xml
 	def update
-		@ad_group = AdGroup.find(params[:id])
+		@ad_group = AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
+		@ad_group.user_account_id = @auth_user.account_id
 
 		respond_to do |format|
 			if @ad_group.update_attributes(params[:ad_group])
@@ -72,7 +74,7 @@ class AdGroupsController < AuthenticateController
 	# DELETE /ad_groups/1
 	# DELETE /ad_groups/1.xml
 	#def destroy
-	#	@ad_group = AdGroup.find(params[:id])
+	#	@ad_group = AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 	#	@ad_group.destroy
 
 	#	respond_to do |format|

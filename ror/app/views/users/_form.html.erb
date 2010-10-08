@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :account_id %><br />
-    <%= f.select :account_id, Account.all.collect{ |a| [a.name, a.id] } %>
-  </div>
-  <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username %>
   </div>

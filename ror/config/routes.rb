@@ -7,7 +7,6 @@ Ror::Application.routes.draw do
 	match "/logout" => "authenticate#logout"
 	match "/" => "default#index"
 
-	resources :accounts
 	resources :users
 	resources :publishers
 	resources :campaigns

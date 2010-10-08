@@ -2,7 +2,7 @@ class CampaignsController < AuthenticateController
 	# GET /campaigns
 	# GET /campaigns.xml
 	def index
-		@campaigns = Campaign.all
+		@campaigns = Campaign.where(:account_id => @auth_user.account_id).all
 
 		respond_to do |format|
 			format.html # index.html.erb
@@ -13,7 +13,7 @@ class CampaignsController < AuthenticateController
 	# GET /campaigns/1
 	# GET /campaigns/1.xml
 	def show
-		@campaign = Campaign.find(params[:id])
+		@campaign = Campaign.where(:account_id => @auth_user.account_id).find(params[:id])
 
 		respond_to do |format|
 			format.html # show.html.erb
@@ -34,13 +34,14 @@ class CampaignsController < AuthenticateController
 
 	# GET /campaigns/1/edit
 	def edit
-		@campaign = Campaign.find(params[:id])
+		@campaign = Campaign.where(:account_id => @auth_user.account_id).find(params[:id])
 	end
 
 	# POST /campaigns
 	# POST /campaigns.xml
 	def create
 		@campaign = Campaign.new(params[:campaign])
+		@campaign.account_id = @auth_user.account_id
 
 		respond_to do |format|
 			if @campaign.save
@@ -56,7 +57,7 @@ class CampaignsController < AuthenticateController
 	# PUT /campaigns/1
 	# PUT /campaigns/1.xml
 	def update
-		@campaign = Campaign.find(params[:id])
+		@campaign = Campaign.where(:account_id => @auth_user.account_id).find(params[:id])
 
 		respond_to do |format|
 			if @campaign.update_attributes(params[:campaign])
@@ -72,7 +73,7 @@ class CampaignsController < AuthenticateController
 	# DELETE /campaigns/1
 	# DELETE /campaigns/1.xml
 	#def destroy
-	#	@campaign = Campaign.find(params[:id])
+	#	@campaign = Campaign.where(:account_id => @auth_user.account_id).find(params[:id])
 	#	@campaign.destroy
 
 	#	respond_to do |format|

@@ -2,7 +2,7 @@ class UsersController < AuthenticateController
 	# GET /users
 	# GET /users.xml
 	def index
-		@users = User.all
+		@users = User.where(:account_id => @auth_user.account_id).all
 
 		respond_to do |format|
 			format.html # index.html.erb
@@ -13,7 +13,7 @@ class UsersController < AuthenticateController
 	# GET /users/1
 	# GET /users/1.xml
 	def show
-		@user = User.find(params[:id])
+		@user = User.where(:account_id => @auth_user.account_id).find(params[:id])
 
 		respond_to do |format|
 			format.html # show.html.erb
@@ -34,13 +34,14 @@ class UsersController < AuthenticateController
 
 	# GET /users/1/edit
 	def edit
-		@user = User.find(params[:id])
+		@user = User.where(:account_id => @auth_user.account_id).find(params[:id])
 	end
 
 	# POST /users
 	# POST /users.xml
 	def create
 		@user = User.new(params[:user])
+		@user.account_id = @auth_user.account_id
 
 		respond_to do |format|
 			if @user.save
@@ -56,7 +57,7 @@ class UsersController < AuthenticateController
 	# PUT /users/1
 	# PUT /users/1.xml
 	def update
-		@user = User.find(params[:id])
+		@user = User.where(:account_id => @auth_user.account_id).find(params[:id])
 
 		respond_to do |format|
 			if @user.update_attributes(params[:user])
@@ -72,7 +73,7 @@ class UsersController < AuthenticateController
 	# DELETE /users/1
 	# DELETE /users/1.xml
 	#def destroy
-	#	@user = User.find(params[:id])
+	#	@user = User.where(:account_id => @auth_user.account_id).find(params[:id])
 	#	@user.destroy
 
 	#	respond_to do |format|

@@ -2,77 +2,79 @@ class AdsController < AuthenticateController
 	# GET /ads
 	# GET /ads.xml
 	def index
-	 @ads = Ad.includes([:ad_group, :template_type]).all
+		@ads = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).all
 
-	 respond_to do |format|
-		format.html # index.html.erb
-		format.xml  { render :xml => @ads }
-	 end
+		respond_to do |format|
+			format.html # index.html.erb
+			format.xml  { render :xml => @ads }
+		end
 	end
 
 	# GET /ads/1
 	# GET /ads/1.xml
 	def show
-	 @ad = Ad.find(params[:id])
+		@ad = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 
-	 respond_to do |format|
-		format.html # show.html.erb
-		format.xml  { render :xml => @ad }
-	 end
+		respond_to do |format|
+			format.html # show.html.erb
+			format.xml  { render :xml => @ad }
+		end
 	end
 
 	# GET /ads/new
 	# GET /ads/new.xml
 	def new
-	 @ad = Ad.new
+		@ad = Ad.new
 
-	 respond_to do |format|
-		format.html # new.html.erb
-		format.xml  { render :xml => @ad }
-	 end
+		respond_to do |format|
+			format.html # new.html.erb
+			format.xml  { render :xml => @ad }
+		end
 	end
 
 	# GET /ads/1/edit
 	def edit
-	 @ad = Ad.find(params[:id])
+		@ad = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 	end
 
 	# POST /ads
 	# POST /ads.xml
 	def create
-	 @ad = Ad.new(params[:ad])
+		@ad = Ad.new(params[:ad])
+		@ad.user_account_id = @auth_user.account_id
 
-	 respond_to do |format|
-		if @ad.save
-		  format.html { redirect_to(@ad, :notice => 'Ad was successfully created.') }
-		  format.xml  { render :xml => @ad, :status => :created, :location => @ad }
-		else
-		  format.html { render :action => "new" }
-		  format.xml  { render :xml => @ad.errors, :status => :unprocessable_entity }
+		respond_to do |format|
+			if @ad.save
+				format.html { redirect_to(@ad, :notice => 'Ad was successfully created.') }
+				format.xml  { render :xml => @ad, :status => :created, :location => @ad }
+			else
+				format.html { render :action => "new" }
+				format.xml  { render :xml => @ad.errors, :status => :unprocessable_entity }
+			end
 		end
-	 end
 	end
 
 	# PUT /ads/1
 	# PUT /ads/1.xml
 	def update
-	  @ad = Ad.find(params[:id])
+		@ad = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
+		@ad.user_account_id = @auth_user.account_id
 
-	  respond_to do |format|
-		  if @ad.update_attributes(params[:ad])
-			  format.html { redirect_to(@ad, :notice => 'Ad was successfully updated.') }
-			  format.xml  { head :ok }
-		  else
-			  format.html { render :action => "edit" }
-			  format.xml  { render :xml => @ad.errors, :status => :unprocessable_entity }
-		  end
-	  end
+		respond_to do |format|
+			if @ad.update_attributes(params[:ad])
+				format.html { redirect_to(@ad, :notice => 'Ad was successfully updated.') }
+				format.xml  { head :ok }
+			else
+				format.html { render :action => "edit" }
+				format.xml  { render :xml => @ad.errors, :status => :unprocessable_entity }
+			end
+		end
 	end
 
 	# DELETE /ads/1
 	# DELETE /ads/1.xml
 	#def destroy
-	#  @ad = Ad.find(params[:id])
+	#  @ad = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 	#  @ad.destroy
 
 	#  respond_to do |format|

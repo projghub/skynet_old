@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :campaign_id %><br />
-	 <%= f.select :campaign_id, Campaign.all.collect{ |c| [c.name, c.id] } %>
+	 <%= f.select :campaign_id, Campaign.where(:account_id => @auth_user.account_id).all.collect{ |c| [c.name, c.id] } %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :ad_group_id, "Ad Group" %><br />
-	 <%= f.select :ad_group_id, AdGroup.all.collect{ |ag| [ag.name, ag.id] } %>
+	 <%= f.select :ad_group_id, AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).all.collect{ |ag| [ag.name, ag.id] } %>
   </div>
   <div class="field">
     <%= f.label :template_type_id, "Template Type" %><br />
