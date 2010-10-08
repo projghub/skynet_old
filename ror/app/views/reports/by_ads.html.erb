@@ -1,0 +1,18 @@
+<table class="reports">
+	<thead>
+		<tr>
+			<th>Ad</th>
+			<th>Impressions</th>
+			<th>Clicks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @ads.each do |ad| %>
+			<tr>
+				<td><%= ad.title %></td>
+				<td><%= "%d" % ad.impressions %></td>
+				<td><%= "%d" % ad.clicks %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

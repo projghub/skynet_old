@@ -5,13 +5,15 @@ Ror::Application.routes.draw do
 	match "/click" => "click#index"
 	match "/login" => "authenticate#login"
 	match "/logout" => "authenticate#logout"
-	match "/" => "default#index"
+	root :to => "default#index"
 
 	resources :users
 	resources :publishers
 	resources :campaigns
 	resources :ad_groups
 	resources :ads
+	match "/reports" => "reports#index"
+	match "/reports/:action" => "reports"
 
 	# The priority is based upon order of creation:
 	# first created -> highest priority.

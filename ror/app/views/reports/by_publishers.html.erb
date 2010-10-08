@@ -1,0 +1,18 @@
+<table class="reports">
+	<thead>
+		<tr>
+			<th>Publisher</th>
+			<th>Impressions</th>
+			<th>Clicks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @publishers.each do |publisher| %>
+			<tr>
+				<td><%= publisher.name %></td>
+				<td><%= "%d" % (publisher.impressions || 0) %></td>
+				<td><%= "%d" % (publisher.clicks || 0) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
