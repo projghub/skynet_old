@@ -21,16 +21,21 @@ class ReportsController < AuthenticateController
 			if end_date.empty?
 				end_date = nil
 			elsif end_date =~ /\A[0-9]{4}-[0-9]{2}-[0-9]{2}\Z/ && t = (Time.parse(end_date) rescue false)
-				end_date = Time.utc(t.year, t.month, t.day).to_i
+				end_date = Time.utc(t.year, t.month, t.day, 23, 59, 59).to_i
 			else
 				return redirect_from_filter
 			end
 		end
 		if !start_date.nil?
-			return redirect_from_filter if start_date > Time.now.to_i || (!end_date.nil? && start_date > end_date)
+			return redirect_from_filter if start_date > Time.now.getutc.to_i || (!end_date.nil? && start_date > end_date)
 		end
 		if !end_date.nil?
-			return redirect_from_filter if end_date > Time.now.to_i
+			t = Time.now.getutc
+			return redirect_from_filter if end_date > Time.utc(t.year, t.month, t.day, 23, 59, 59).to_i
+			if start_date.nil?
+				t = Time.at(end_date).getutc
+				start_date = Time.utc(t.year, t.month, t.day)
+			end
 		end
 		session[:reports_start_date] = start_date
 		session[:reports_end_date] = end_date
