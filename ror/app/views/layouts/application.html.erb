@@ -14,6 +14,8 @@
 				<%= render :partial => "layouts/nav" %>
 			</div>
 
+			<div id="second-header"><%= yield :second_header %></div>
+
 			<div id="content">
 				<%= render :partial => "layouts/flash_messages" %>
 				<%= yield %>

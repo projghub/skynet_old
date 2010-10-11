@@ -1,2 +1,25 @@
-<h1>Reports#by_template_types</h1>
-<p>Find me in app/views/reports/by_template_types.html.erb</p>
+<% content_for :second_header do %>
+	<%= render :partial => "reports/second_header" %>
+<% end %>
+
+<h1>Template Types Reports</h1>
+<h4>Dates: <%= Time.at(session[:reports_start_date]).utc %> - <%= Time.at(session[:reports_end_date]).utc %></h4>
+
+<table class="reports">
+	<thead>
+		<tr>
+			<th>Template Type</th>
+			<th>Impressions</th>
+			<th>Clicks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @template_types.each do |template_type| %>
+			<tr>
+				<td><%= template_type.name %></td>
+				<td><%= "%d" % (template_type.impressions || 0) %></td>
+				<td><%= "%d" % (template_type.clicks || 0) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -21,10 +21,34 @@ body
 	background: -moz-radial-gradient(top center, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.0));
 	background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.0)), to(rgba(0, 0, 0, 0.2)));*/
 }
+h1, h2, h3, h4, h5, h6
+{
+	margin-bottom: 10px
+}
 h1
 {
+	font-weight: bold;
 	font-size: 160%;
-	margin-bottom: 10px;
+}
+h2
+{
+	font-size: 150%;
+}
+h3
+{
+	font-size: 140%;
+}
+h4
+{
+	font-size: 130%;
+}
+h5
+{
+	font-size: 120%;
+}
+h6
+{
+	font-size: 110%;
 }
 table
 {
@@ -46,6 +70,18 @@ table td
 p
 {
 	margin-bottom: 1em;
+}
+sup
+{
+	font-size: 60%;
+}
+.reports .disabled
+{
+	color: #bababa;
+}
+.reports tbody tr:nth-child(even)
+{
+	background-color: #eee;
 }
 #container
 {
@@ -108,6 +144,27 @@ p
 	color: #fff;
 	background-color: rgba(255, 255, 255, 0.25);
 	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); -moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+#second-header
+{
+	padding: 4px 20px;
+	color: #555;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-top: 1px solid #333;
+	font-size: 90%;
+}
+#second-header .nav-item
+{
+	margin-right: 15px;
+}
+#second-header a
+{
+	color: #333;
+	text-decoration: none;
+}
+#second-header a:hover
+{
+	text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.75);
 }
 /*#content
 {

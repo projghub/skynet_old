@@ -1,2 +1,25 @@
-<h1>Reports#by_campaigns</h1>
-<p>Find me in app/views/reports/by_campaigns.html.erb</p>
+<% content_for :second_header do %>
+	<%= render :partial => "reports/second_header" %>
+<% end %>
+
+<h1>Campaigns Reports</h1>
+<h4>Dates: <%= Time.at(session[:reports_start_date]).utc %> - <%= Time.at(session[:reports_end_date]).utc %></h4>
+
+<table class="reports">
+	<thead>
+		<tr>
+			<th>Campaign</th>
+			<th>Impressions</th>
+			<th>Clicks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @campaigns.each do |campaign| %>
+			<tr<% unless campaign.enabled %> class="disabled"<% end %>>
+				<td><%= campaign.name %> <sup><%= link_to 'Edit', edit_campaign_path(campaign) %></sup></td>
+				<td><%= "%d" % (campaign.impressions || 0) %></td>
+				<td><%= "%d" % (campaign.clicks || 0) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -1,3 +1,10 @@
+<% content_for :second_header do %>
+	<%= render :partial => "reports/second_header" %>
+<% end %>
+
+<h1>Ads Reports</h1>
+<h4>Dates: <%= Time.at(session[:reports_start_date]).utc %> - <%= Time.at(session[:reports_end_date]).utc %></h4>
+
 <table class="reports">
 	<thead>
 		<tr>
@@ -8,10 +15,10 @@
 	</thead>
 	<tbody>
 		<% @ads.each do |ad| %>
-			<tr>
-				<td><%= ad.title %></td>
-				<td><%= "%d" % ad.impressions %></td>
-				<td><%= "%d" % ad.clicks %></td>
+			<tr<% unless ad.enabled && ad.campaign_enabled == 1 %> class="disabled"<% end %>>
+				<td><%= ad.title %> <sup><%= link_to 'Edit', edit_ad_path(ad) %></sup></td>
+				<td><%= "%d" % (ad.impressions || 0) %></td>
+				<td><%= "%d" % (ad.clicks || 0) %></td>
 			</tr>
 		<% end %>
 	</tbody>

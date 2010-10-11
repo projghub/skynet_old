@@ -1,2 +1,25 @@
-<h1>Reports#by_ad_groups</h1>
-<p>Find me in app/views/reports/by_ad_groups.html.erb</p>
+<% content_for :second_header do %>
+	<%= render :partial => "reports/second_header" %>
+<% end %>
+
+<h1>Ad Groups Reports</h1>
+<h4>Dates: <%= Time.at(session[:reports_start_date]).utc %> - <%= Time.at(session[:reports_end_date]).utc %></h4>
+
+<table class="reports">
+	<thead>
+		<tr>
+			<th>Ad Group</th>
+			<th>Impressions</th>
+			<th>Clicks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @ad_groups.each do |ad_group| %>
+			<tr<% unless ad_group.campaign_enabled == 1 %> class="disabled"<% end %>>
+				<td><%= ad_group.name %> <sup><%= link_to 'Edit', edit_ad_group_path(ad_group) %></sup></td>
+				<td><%= "%d" % (ad_group.impressions || 0) %></td>
+				<td><%= "%d" % (ad_group.clicks || 0) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

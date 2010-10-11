@@ -1,3 +1,10 @@
+<% content_for :second_header do %>
+	<%= render :partial => "reports/second_header" %>
+<% end %>
+
+<h1>Publishers Reports</h1>
+<h4>Dates: <%= Time.at(session[:reports_start_date]).utc %> - <%= Time.at(session[:reports_end_date]).utc %></h4>
+
 <table class="reports">
 	<thead>
 		<tr>
@@ -8,8 +15,8 @@
 	</thead>
 	<tbody>
 		<% @publishers.each do |publisher| %>
-			<tr>
-				<td><%= publisher.name %></td>
+			<tr<% unless publisher.enabled %> class="disabled"<% end %>>
+				<td><%= publisher.name %> <sup><%= link_to 'Edit', edit_publisher_path(publisher) %></sup></td>
 				<td><%= "%d" % (publisher.impressions || 0) %></td>
 				<td><%= "%d" % (publisher.clicks || 0) %></td>
 			</tr>

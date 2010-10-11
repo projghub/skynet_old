@@ -23,7 +23,7 @@ class ServingStat < ActiveRecord::Base
 
 	def self.time_now
 		t = Time.now
-		Time.mktime(t.year, t.month, t.day, t.hour)
+		Time.utc(t.year, t.month, t.day, t.hour)
 	end
 
 	def self.build_hash(stat)
