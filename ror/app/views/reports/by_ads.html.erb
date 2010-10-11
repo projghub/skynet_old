@@ -2,8 +2,7 @@
 	<%= render :partial => "reports/second_header" %>
 <% end %>
 
-<h1>Ads Reports</h1>
-<h4>Dates: <%= Time.at(session[:reports_start_date]).utc %> - <%= Time.at(session[:reports_end_date]).utc %></h4>
+<%= render :partial => "reports/header", :locals => {:title => "Ads Report", :action => "by_ads"} %>
 
 <table class="reports">
 	<thead>

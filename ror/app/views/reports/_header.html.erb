@@ -1,0 +1,13 @@
+<h1><%= title %></h1>
+
+<div id="adjust_reports_filter">
+	<%= form_for :reports_filter, :url => {:controller => "reports", :action => "filter", :redirect_action => action} do |f| %>
+		<h4>
+			Date Range:
+			<%= f.text_field :start_date, :value => format_utc(session[:reports_start_date], "%Y-%m-%d"), :size => "8" %> &mdash;
+			<%= f.text_field :end_date, :value => format_utc(session[:reports_end_date], "%Y-%m-%d"), :size => "8" %>
+			<%= f.submit "Adjust" %>
+		</h4>
+	<% end %>
+</div>
+

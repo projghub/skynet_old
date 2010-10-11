@@ -5,6 +5,38 @@ class ReportsController < AuthenticateController
 		redirect_to :controller => "reports", :action => "by_campaigns"
 	end
 
+	def filter
+		start_date = params[:reports_filter][:start_date]
+		if !start_date.nil?
+			if start_date.empty?
+				start_date = nil
+			elsif start_date =~ /\A[0-9]{4}-[0-9]{2}-[0-9]{2}\Z/ && t = (Time.parse(start_date) rescue false)
+				start_date = Time.utc(t.year, t.month, t.day).to_i
+			else
+				return redirect_from_filter
+			end
+		end
+		end_date = params[:reports_filter][:end_date]
+		if !end_date.nil?
+			if end_date.empty?
+				end_date = nil
+			elsif end_date =~ /\A[0-9]{4}-[0-9]{2}-[0-9]{2}\Z/ && t = (Time.parse(end_date) rescue false)
+				end_date = Time.utc(t.year, t.month, t.day).to_i
+			else
+				return redirect_from_filter
+			end
+		end
+		if !start_date.nil?
+			return redirect_from_filter if start_date > Time.now.to_i || (!end_date.nil? && start_date > end_date)
+		end
+		if !end_date.nil?
+			return redirect_from_filter if end_date > Time.now.to_i
+		end
+		session[:reports_start_date] = start_date
+		session[:reports_end_date] = end_date
+		redirect_from_filter
+	end
+
 	def by_campaigns
 		@campaigns = Ad.find_by_sql(["select campaigns.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks
 			from campaigns
@@ -84,6 +116,14 @@ class ReportsController < AuthenticateController
 		if session[:reports_end_date].nil?
 			t = Time.now
 			session[:reports_end_date] = Time.utc(t.year, t.month, t.day, 23, 59, 59).to_i
+		end
+	end
+
+	def redirect_from_filter
+		if !params[:redirect_action].nil? && %w{by_campaigns by_ad_groups by_ads by_publishers by_templates by_template_types}.include?(params[:redirect_action])
+			redirect_to :controller => "reports", :action => params[:redirect_action]
+		else
+			redirect_to :controller => "reports", :action => "index"
 		end
 	end
 end
