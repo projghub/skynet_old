@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101006200856) do
+ActiveRecord::Schema.define(:version => 20101012155743) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -32,18 +32,22 @@ ActiveRecord::Schema.define(:version => 20101006200856) do
   add_index "ad_groups", ["campaign_id"], :name => "campaign_id_index"
 
   create_table "ads", :force => true do |t|
-    t.integer  "ad_group_id",       :null => false
-    t.integer  "template_type_id",  :null => false
-    t.string   "title",             :null => false
-    t.string   "description_line1", :null => false
-    t.string   "description_line2", :null => false
-    t.string   "description",       :null => false
-    t.string   "display_url",       :null => false
-    t.string   "destination_url",   :null => false
-    t.boolean  "enabled",           :null => false
+    t.integer  "ad_group_id",        :null => false
+    t.integer  "template_type_id",   :null => false
+    t.string   "title",              :null => false
+    t.string   "description_line1",  :null => false
+    t.string   "description_line2",  :null => false
+    t.string   "description",        :null => false
+    t.string   "display_url",        :null => false
+    t.string   "destination_url",    :null => false
+    t.boolean  "enabled",            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "media_url",         :null => false
+    t.string   "media_url",          :null => false
+    t.string   "media_file_name"
+    t.string   "media_content_type"
+    t.integer  "media_file_size"
+    t.datetime "media_updated_at"
   end
 
   add_index "ads", ["ad_group_id"], :name => "ad_group_id_index"

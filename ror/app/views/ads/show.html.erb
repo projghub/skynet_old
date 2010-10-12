@@ -15,7 +15,8 @@
 
 <p>
   <b>Media URL:</b>
-  <%= @ad.media_url.empty? ? "(none)" : link_to(@ad.media_url, @ad.media_url) %>
+  <%= @ad.media_url.empty? ? "(awaiting upload)" : link_to(@ad.media_url, @ad.media_url) %>
+</p>
 
 <p>
   <b>Description Line 1:</b>

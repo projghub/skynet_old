@@ -6,3 +6,4 @@ public/javascripts/serve.js
 tmp/**/*
 tmp/restart.txt
 *.swp
+public/assets/*

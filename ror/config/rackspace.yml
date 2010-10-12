@@ -1,0 +1,8 @@
+development:
+  container: skynet-dev
+  username: bgbng
+  api_key: 25485b908990d64d0d683dcf7577f371
+production:
+  container: skynet-production
+  username: bgbng
+  api_key: 25485b908990d64d0d683dcf7577f371

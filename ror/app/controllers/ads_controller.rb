@@ -62,6 +62,23 @@ class AdsController < AuthenticateController
 
 		respond_to do |format|
 			if @ad.update_attributes(params[:ad])
+				spawn do
+					logger.info "Starting file upload to Rackspace."
+					creds = YAML.load_file("#{Rails.root}/config/rackspace.yml")[Rails.env]
+					conn = CloudFiles::Connection.new(creds["username"], creds["api_key"])
+					container_name = "#{creds["container"]}_#{@ad.id}"
+					if conn.container_exists?(container_name)
+						container = conn.container(container_name) 
+					else
+						container = conn.create_container(container_name)
+						container.make_public
+					end
+					object = container.create_object(@ad.media.original_filename)
+					object.load_from_filename(@ad.media.path)
+					@ad.media_url = object.public_url
+					@ad.save
+					logger.info "File finished uploading to Rackspace and saved URL."
+				end if params[:ad][:media].instance_of?(File)
 				format.html { redirect_to(@ad, :notice => 'Ad was successfully updated.') }
 				format.xml  { head :ok }
 			else
