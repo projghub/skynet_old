@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101012155743) do
+ActiveRecord::Schema.define(:version => 20101012211731) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -103,7 +103,8 @@ ActiveRecord::Schema.define(:version => 20101012155743) do
   add_index "serving_stats", ["time_served"], :name => "time_served_index"
 
   create_table "template_types", :force => true do |t|
-    t.string "name", :null => false
+    t.string "name",  :null => false
+    t.string "label", :null => false
   end
 
   add_index "template_types", ["name"], :name => "name_index", :unique => true
