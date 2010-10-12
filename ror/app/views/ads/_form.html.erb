@@ -16,8 +16,8 @@
 	 <%= f.select :ad_group_id, AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).all.collect{ |ag| [ag.name, ag.id] } %>
   </div>
   <div class="field">
-    <%= f.label :template_type_id, "Template Type" %><br />
-	 <%= f.select :template_type_id, TemplateType.all.collect{ |tt| [tt.name, tt.id] } %>
+    <%= f.label :ad_type_id, "Ad Type" %><br />
+	 <%= f.select :ad_type_id, AdType.all.collect{ |at| ["#{at.label} (#{at.name})", at.id] } %>
   </div>
   <div class="field">
     <%= f.label :title %><br />

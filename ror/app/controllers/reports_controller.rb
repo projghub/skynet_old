@@ -99,16 +99,16 @@ class ReportsController < AuthenticateController
 			order by sum(serving_stats.impressions) desc", @auth_user.account_id, session[:reports_start_date], session[:reports_end_date]])
 	end
 
-	def by_template_types
-		@template_types = Ad.find_by_sql(["select template_types.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks
-			from template_types
-			left join templates on template_types.id = templates.type_id
+	def by_ad_types
+		@ad_types = Ad.find_by_sql(["select ad_types.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks
+			from ad_types
+			left join templates on ad_types.id = templates.ad_type_id
 			left join serving_stats on templates.id = serving_stats.template_id
 			left join ads on serving_stats.ad_id = ads.id
 			left join ad_groups on ads.ad_group_id = ad_groups.id
 			left join campaigns on ad_groups.campaign_id = campaigns.id
 			where campaigns.account_id = ? and serving_stats.time_served >= ? and serving_stats.time_served <= ?
-			group by template_types.id
+			group by ad_types.id
 			order by sum(serving_stats.impressions) desc", @auth_user.account_id, session[:reports_start_date], session[:reports_end_date]])
 	end
 
@@ -125,7 +125,7 @@ class ReportsController < AuthenticateController
 	end
 
 	def redirect_from_filter
-		if !params[:redirect_action].nil? && %w{by_campaigns by_ad_groups by_ads by_publishers by_templates by_template_types}.include?(params[:redirect_action])
+		if !params[:redirect_action].nil? && %w{by_campaigns by_ad_groups by_ads by_publishers by_templates by_ad_types}.include?(params[:redirect_action])
 			redirect_to :controller => "reports", :action => params[:redirect_action]
 		else
 			redirect_to :controller => "reports", :action => "index"

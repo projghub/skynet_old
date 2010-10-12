@@ -2,7 +2,7 @@ class AdsController < AuthenticateController
 	# GET /ads
 	# GET /ads.xml
 	def index
-		@ads = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).all
+		@ads = Ad.includes({:ad_group => :campaign}, :ad_type).where("campaigns.account_id = ?", @auth_user.account_id).all
 
 		respond_to do |format|
 			format.html # index.html.erb
@@ -13,7 +13,7 @@ class AdsController < AuthenticateController
 	# GET /ads/1
 	# GET /ads/1.xml
 	def show
-		@ad = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
+		@ad = Ad.includes({:ad_group => :campaign}, :ad_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 
 		respond_to do |format|
 			format.html # show.html.erb
@@ -34,7 +34,7 @@ class AdsController < AuthenticateController
 
 	# GET /ads/1/edit
 	def edit
-		@ad = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
+		@ad = Ad.includes({:ad_group => :campaign}, :ad_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 	end
 
 	# POST /ads
@@ -45,6 +45,7 @@ class AdsController < AuthenticateController
 
 		respond_to do |format|
 			if @ad.save
+				upload_media
 				format.html { redirect_to(@ad, :notice => 'Ad was successfully created.') }
 				format.xml  { render :xml => @ad, :status => :created, :location => @ad }
 			else
@@ -57,28 +58,12 @@ class AdsController < AuthenticateController
 	# PUT /ads/1
 	# PUT /ads/1.xml
 	def update
-		@ad = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
+		@ad = Ad.includes({:ad_group => :campaign}, :ad_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 		@ad.user_account_id = @auth_user.account_id
 
 		respond_to do |format|
 			if @ad.update_attributes(params[:ad])
-				spawn do
-					logger.info "Starting file upload to Rackspace."
-					creds = YAML.load_file("#{Rails.root}/config/rackspace.yml")[Rails.env]
-					conn = CloudFiles::Connection.new(creds["username"], creds["api_key"])
-					container_name = "#{creds["container"]}_#{@ad.id}"
-					if conn.container_exists?(container_name)
-						container = conn.container(container_name) 
-					else
-						container = conn.create_container(container_name)
-						container.make_public
-					end
-					object = container.create_object(@ad.media.original_filename)
-					object.load_from_filename(@ad.media.path)
-					@ad.media_url = object.public_url
-					@ad.save
-					logger.info "File finished uploading to Rackspace and saved URL."
-				end if params[:ad][:media].instance_of?(File)
+				upload_media
 				format.html { redirect_to(@ad, :notice => 'Ad was successfully updated.') }
 				format.xml  { head :ok }
 			else
@@ -91,7 +76,7 @@ class AdsController < AuthenticateController
 	# DELETE /ads/1
 	# DELETE /ads/1.xml
 	#def destroy
-	#  @ad = Ad.includes({:ad_group => :campaign}, :template_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
+	#  @ad = Ad.includes({:ad_group => :campaign}, :ad_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 	#  @ad.destroy
 
 	#  respond_to do |format|
@@ -99,4 +84,25 @@ class AdsController < AuthenticateController
 	#	  format.xml  { head :ok }
 	#  end
 	#end
+
+	protected
+	def upload_media
+		spawn do
+			logger.info "Starting file upload to Rackspace."
+			creds = YAML.load_file("#{Rails.root}/config/rackspace.yml")[Rails.env]
+			conn = CloudFiles::Connection.new(creds["username"], creds["api_key"])
+			container_name = "#{creds["container"]}_#{@ad.id}"
+			if conn.container_exists?(container_name)
+				container = conn.container(container_name) 
+			else
+				container = conn.create_container(container_name)
+				container.make_public
+			end
+			object = container.create_object(@ad.media.original_filename)
+			object.load_from_filename(@ad.media.path)
+			@ad.media_url = object.public_url
+			@ad.save
+			logger.info "File finished uploading to Rackspace and saved URL."
+		end unless params[:ad][:media].nil?
+	end
 end

@@ -4,7 +4,7 @@
 	<thead>
 		<tr>
 			<th>Ad Group</th>
-			<th>Template Type</th>
+			<th>Ad Type</th>
 			<th>Title</th>
 			<th>Destination URL</th>
 			<th>Enabled?</th>
@@ -17,7 +17,7 @@
 		<% @ads.each do |ad| %>
 			<tr>
 				<td><%= ad.ad_group.name %></td>
-				<td><%= ad.template_type.name %></td>
+				<td><%= ad.ad_type.label %></td>
 				<td><%= ad.title %></td>
 				<td><%= ad.destination_url %></td>
 				<td><%= ad.enabled ? "Yes" : "No" %></td>

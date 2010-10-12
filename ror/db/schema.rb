@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101012211731) do
+ActiveRecord::Schema.define(:version => 20101012213706) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -31,9 +31,15 @@ ActiveRecord::Schema.define(:version => 20101012211731) do
 
   add_index "ad_groups", ["campaign_id"], :name => "campaign_id_index"
 
+  create_table "ad_types", :force => true do |t|
+    t.string "name",  :null => false
+    t.string "label", :null => false
+  end
+
+  add_index "ad_types", ["name"], :name => "index_ad_types_on_name", :unique => true
+
   create_table "ads", :force => true do |t|
     t.integer  "ad_group_id",        :null => false
-    t.integer  "template_type_id",   :null => false
     t.string   "title",              :null => false
     t.string   "description_line1",  :null => false
     t.string   "description_line2",  :null => false
@@ -48,12 +54,13 @@ ActiveRecord::Schema.define(:version => 20101012211731) do
     t.string   "media_content_type"
     t.integer  "media_file_size"
     t.datetime "media_updated_at"
+    t.integer  "ad_type_id",         :null => false
   end
 
   add_index "ads", ["ad_group_id"], :name => "ad_group_id_index"
+  add_index "ads", ["ad_type_id"], :name => "index_ads_on_ad_type_id"
   add_index "ads", ["enabled"], :name => "enabled_index"
-  add_index "ads", ["template_type_id", "enabled"], :name => "template_type_id_and_enabled_index"
-  add_index "ads", ["template_type_id"], :name => "template_type_id_index"
+  add_index "ads", ["enabled"], :name => "template_type_id_and_enabled_index"
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",       :null => false
@@ -110,7 +117,6 @@ ActiveRecord::Schema.define(:version => 20101012211731) do
   add_index "template_types", ["name"], :name => "name_index", :unique => true
 
   create_table "templates", :force => true do |t|
-    t.integer  "type_id",    :null => false
     t.string   "name",       :null => false
     t.integer  "positions",  :null => false
     t.integer  "width",      :null => false
@@ -118,9 +124,10 @@ ActiveRecord::Schema.define(:version => 20101012211731) do
     t.string   "file",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "ad_type_id", :null => false
   end
 
-  add_index "templates", ["type_id"], :name => "type_id_index"
+  add_index "templates", ["ad_type_id"], :name => "index_templates_on_ad_type_id"
 
   create_table "users", :force => true do |t|
     t.integer  "account_id",    :null => false

@@ -1,0 +1,24 @@
+<% content_for :second_header do %>
+	<%= render :partial => "reports/second_header" %>
+<% end %>
+
+<%= render :partial => "reports/header", :locals => {:title => "Ad Types Report", :action => "by_ad_types"} %>
+
+<table class="reports">
+	<thead>
+		<tr>
+			<th>Ad Type</th>
+			<th>Impressions</th>
+			<th>Clicks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @ad_types.each do |ad_type| %>
+			<tr>
+				<td><%= ad_type.label %></td>
+				<td><%= "%d" % (ad_type.impressions || 0) %></td>
+				<td><%= "%d" % (ad_type.clicks || 0) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
