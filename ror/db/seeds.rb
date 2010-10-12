@@ -14,7 +14,7 @@ display_300x250 = AdType.create(:name => "display_300x250", :label => "Inline Re
 display_120x600 = AdType.create(:name => "display_120x600", :label => "Skyscraper")
 display_160x600 = AdType.create(:name => "display_160x600", :label => "Wide Skyscraper")
 display_300x600 = AdType.create(:name => "display_300x600", :label => "Monster")
-text = TemplateType.create(:name => "text", :label => "Text")
+text = AdType.create(:name => "text", :label => "Text")
 Template.create(:ad_type_id => display_468x60.id, :name => "Banner", :positions => 1, :width => 468, :height => 60, :file => "serve/template_1/layout")
 Template.create(:ad_type_id => text.id, :name => "Text 300x250", :positions => 5, :width => 300, :height => 250, :file => "serve/template_2/layout")
 Template.create(:ad_type_id => display_250x250.id, :name => "Square", :positions => 1, :width => 250, :height => 250, :file => "serve/template_3/layout")
