@@ -28,6 +28,17 @@
   <%= @publisher.enabled ? "Yes" : "No" %>
 </p>
 
+<p>
+	<b>Integration Script:</b>
+	<em>In the following script, the supplied div element is optional. You can replace <code>id: '_sn_block'</code> with any other element's id. Also, you can replace <code>tid: '2'</code> with the id of any valid template.</em><br />
+	<code><%= escape_once render(:partial => "publishers/integration_script", :locals => {:publisher => @publisher}) %></code>
+</p>
+
+<p>
+	<b>Integration IFrame:</b>
+	<em>In the following html, you can replace <code>tid=2</code> with the id of any valid template.</em><br />
+	<code><%= escape_once render(:partial => "publishers/integration_iframe", :locals => {:publisher => @publisher}) %></code>
+</p>
 
 <%= link_to 'Edit', edit_publisher_path(@publisher) %> |
 <%= link_to 'Back', publishers_path %>
