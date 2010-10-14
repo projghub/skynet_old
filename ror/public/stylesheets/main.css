@@ -83,17 +83,15 @@ code
 {
 	color: #bababa;
 }
-.reports tbody tr:nth-child(even)
-{
-	background-color: #eee;
-}
-table.form
+table.form,
+table.list,
+table.reports
 {
 	margin-bottom: 10px;
 }
-table.list
+table.list,
+table.reports
 {
-	margin-bottom: 10px;
 	border: 1px solid #d8d8d8;
 }
 table.form .field th,
@@ -107,7 +105,8 @@ table.form .field th
 	width: 20%;
 }
 table.form .field th,
-table.list thead th
+table.list thead th,
+table.reports thead th
 {
 	background-color: #f4f8ff;
 }
@@ -116,18 +115,24 @@ table.form .field:nth-child(even) th
 	background-color: #e4efff
 }
 table.form .field td,
-table.list tbody tr
+table.list tbody tr,
+table.reports tbody tr
 {
 	background-color: #ffffff;
 }
 table.form .field:nth-child(even) td,
-table.list tbody tr:nth-child(even)
+table.list tbody tr:nth-child(even),
+table.reports tbody tr:nth-child(even)
 {
 	background-color: #f4f4f4;
 }
 table.list .actions
 {
 	width: 10%;
+	text-align: right;
+}
+table.reports .value
+{
 	text-align: right;
 }
 #container

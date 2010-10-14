@@ -8,16 +8,18 @@
 	<thead>
 		<tr>
 			<th>Template</th>
-			<th>Impressions</th>
-			<th>Clicks</th>
+			<th class="value">Impressions</th>
+			<th class="value">Clicks</th>
+			<th class="value">Click-Through Rate</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @templates.each do |template| %>
 			<tr>
-				<td><%= template.name %></td>
-				<td><%= "%d" % (template.impressions || 0) %></td>
-				<td><%= "%d" % (template.clicks || 0) %></td>
+				<th><%= template.name %></th>
+				<td class="value"><%= "%d" % (template.impressions || 0) %></td>
+				<td class="value"><%= "%d" % (template.clicks || 0) %></td>
+				<td class="value"><%= template.impressions == 0 ? "N/A" : ("%.1f%%" % ((template.clicks.to_f / template.impressions.to_f) * 100)) %>
 			</tr>
 		<% end %>
 	</tbody>

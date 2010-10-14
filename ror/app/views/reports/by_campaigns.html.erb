@@ -8,16 +8,18 @@
 	<thead>
 		<tr>
 			<th>Campaign</th>
-			<th>Impressions</th>
-			<th>Clicks</th>
+			<th class="value">Impressions</th>
+			<th class="value">Clicks</th>
+			<th class="value">Click-Through Rate</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @campaigns.each do |campaign| %>
 			<tr<% unless campaign.enabled %> class="disabled"<% end %>>
-				<td><%= campaign.name %> <sup><%= link_to 'Edit', edit_campaign_path(campaign) %></sup></td>
-				<td><%= "%d" % (campaign.impressions || 0) %></td>
-				<td><%= "%d" % (campaign.clicks || 0) %></td>
+				<th><%= campaign.name %> <sup><%= link_to 'Edit', edit_campaign_path(campaign) %></sup></th>
+				<td class="value"><%= "%d" % (campaign.impressions || 0) %></td>
+				<td class="value"><%= "%d" % (campaign.clicks || 0) %></td>
+				<td class="value"><%= campaign.impressions == 0 ? "N/A" : ("%.1f%%" % ((campaign.clicks.to_f / campaign.impressions.to_f) * 100)) %>
 			</tr>
 		<% end %>
 	</tbody>

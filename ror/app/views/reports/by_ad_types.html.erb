@@ -8,16 +8,18 @@
 	<thead>
 		<tr>
 			<th>Ad Type</th>
-			<th>Impressions</th>
-			<th>Clicks</th>
+			<th class="value">Impressions</th>
+			<th class="value">Clicks</th>
+			<th class="value">Click-Through Rate</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @ad_types.each do |ad_type| %>
 			<tr>
-				<td><%= ad_type.label %></td>
-				<td><%= "%d" % (ad_type.impressions || 0) %></td>
-				<td><%= "%d" % (ad_type.clicks || 0) %></td>
+				<th><%= ad_type.label %></th>
+				<td class="value"><%= "%d" % (ad_type.impressions || 0) %></td>
+				<td class="value"><%= "%d" % (ad_type.clicks || 0) %></td>
+				<td class="value"><%= ad_type.impressions == 0 ? "N/A" : ("%.1f%%" % ((ad_type.clicks.to_f / ad_type.impressions.to_f) * 100)) %>
 			</tr>
 		<% end %>
 	</tbody>

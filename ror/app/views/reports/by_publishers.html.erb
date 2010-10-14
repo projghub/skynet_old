@@ -8,16 +8,18 @@
 	<thead>
 		<tr>
 			<th>Publisher</th>
-			<th>Impressions</th>
-			<th>Clicks</th>
+			<th class="value">Impressions</th>
+			<th class="value">Clicks</th>
+			<th class="value">Click-Through Rate</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @publishers.each do |publisher| %>
 			<tr<% unless publisher.enabled %> class="disabled"<% end %>>
-				<td><%= publisher.name %> <sup><%= link_to 'Edit', edit_publisher_path(publisher) %></sup></td>
-				<td><%= "%d" % (publisher.impressions || 0) %></td>
-				<td><%= "%d" % (publisher.clicks || 0) %></td>
+				<th><%= publisher.name %> <sup><%= link_to 'Edit', edit_publisher_path(publisher) %></sup></th>
+				<td class="value"><%= "%d" % (publisher.impressions || 0) %></td>
+				<td class="value"><%= "%d" % (publisher.clicks || 0) %></td>
+				<td class="value"><%= publisher.impressions == 0 ? "N/A" : ("%.1f%%" % ((publisher.clicks.to_f / publisher.impressions.to_f) * 100)) %>
 			</tr>
 		<% end %>
 	</tbody>
