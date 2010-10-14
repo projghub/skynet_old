@@ -1,61 +1,63 @@
 <%= form_for(@ad, :html => {:multipart => true}) do |f| %>
-  <% if @ad.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
+	<% if @ad.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
 
-      <ul>
-      <% @ad.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+			<ul>
+				<% @ad.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :ad_group_id, "Ad Group" %><br />
-	 <%= f.select :ad_group_id, AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).all.collect{ |ag| [ag.name, ag.id] } %>
-  </div>
-  <div class="field">
-    <%= f.label :ad_type_id, "Ad Type" %><br />
-	 <%= f.select :ad_type_id, AdType.all.collect{ |at| ["#{at.label} (#{at.name})", at.id] } %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :media %><br />
-    <%= f.file_field :media %>
-  </div>
-  <div class="field">
-    <%= f.label :media_url, "Media URL" %><br />
-    <%= f.text_field :media_url %>
-  </div>
-  <div class="field">
-    <%= f.label :description_line1, "Description Line 1" %><br />
-    <%= f.text_field :description_line1 %>
-  </div>
-  <div class="field">
-    <%= f.label :description_line2, "Description Line 2" %><br />
-    <%= f.text_field :description_line2 %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :display_url, "Display URL" %><br />
-    <%= f.text_field :display_url %>
-  </div>
-  <div class="field">
-    <%= f.label :destination_url, "Destination URL" %><br />
-    <%= f.text_field :destination_url %>
-  </div>
-  <div class="field">
-    <%= f.label :enabled %><br />
-    <%= f.check_box :enabled %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<table class="form">
+		<tr class="field">
+			<th><%= f.label :ad_group_id, "Ad Group" %></th>
+			<td><%= f.select :ad_group_id, AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).all.collect{ |ag| [ag.name, ag.id] } %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :ad_type_id, "Ad Type" %></th>
+			<td><%= f.select :ad_type_id, AdType.all.collect{ |at| ["#{at.label} (#{at.name})", at.id] } %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :title %></th>
+			<td><%= f.text_field :title %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :media %></th>
+			<td><%= f.file_field :media %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :media_url, "Media URL" %></th>
+			<td><%= f.text_field :media_url %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :description_line1, "Description Line 1" %></th>
+			<td><%= f.text_field :description_line1 %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :description_line2, "Description Line 2" %></th>
+			<td><%= f.text_field :description_line2 %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :description %></th>
+			<td><%= f.text_field :description %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :display_url, "Display URL" %></th>
+			<td><%= f.text_field :display_url %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :destination_url, "Destination URL" %></th>
+			<td><%= f.text_field :destination_url %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :enabled %></th>
+			<td><%= f.check_box :enabled %></td>
+		</tr>
+		<tr class="actions">
+			<td colspan="2"><%= f.submit %></td>
+		</tr>
+	</table>
 <% end %>
