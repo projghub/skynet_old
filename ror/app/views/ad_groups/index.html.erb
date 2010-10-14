@@ -1,12 +1,11 @@
 <h1>Listing Ad Groups</h1>
 
-<table>
+<table class="list">
 	<thead>
 		<tr>
 			<th>Name</th>
 			<th>Campaign</th>
-			<th></th>
-			<th></th>
+			<th class="action"></th>
 		</tr>
 	</thead>
 
@@ -15,13 +14,13 @@
 			<tr>
 				<td><%= ad_group.name %></td>
 				<td><%= ad_group.campaign.name %></td>
-				<td><%= link_to 'Show', ad_group %></td>
-				<td><%= link_to 'Edit', edit_ad_group_path(ad_group) %></td>
+				<td class="actions">
+					<%= link_to 'Show', ad_group %>
+					<%= link_to 'Edit', edit_ad_group_path(ad_group) %>
+				</td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
-
-<br />
 
 <%= link_to 'New Ad Group', new_ad_group_path %>

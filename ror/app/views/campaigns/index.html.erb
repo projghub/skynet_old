@@ -1,12 +1,11 @@
 <h1>Listing Campaigns</h1>
 
-<table>
+<table class="list">
 	<thead>
 		<tr>
 			<th>Name</th>
 			<th>Enabled?</th>
-			<th></th>
-			<th></th>
+			<th class="action"></th>
 		</tr>
 	</thead>
 
@@ -15,13 +14,13 @@
 			<tr>
 				<td><%= campaign.name %></td>
 				<td><%= campaign.enabled ? "Yes" : "No" %></td>
-				<td><%= link_to 'Show', campaign %></td>
-				<td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
+				<td class="actions">
+					<%= link_to 'Show', campaign %>
+					<%= link_to 'Edit', edit_campaign_path(campaign) %>
+				</td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
-
-<br />
 
 <%= link_to 'New Campaign', new_campaign_path %>

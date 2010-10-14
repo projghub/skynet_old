@@ -1,13 +1,12 @@
 <h1>Listing Users</h1>
 
-<table>
+<table class="list">
 	<thead>
 		<tr>
 			<th>Username</th>
 			<th>Email</th>
 			<th>Enabled?</th>
-			<th></th>
-			<th></th>
+			<th class="action"></th>
 		</tr>
 	</thead>
 
@@ -17,13 +16,13 @@
 				<td><%= user.username %></td>
 				<td><%= user.email %></td>
 				<td><%= user.enabled ? "Yes" : "No" %></td>
-				<td><%= link_to 'Show', user %></td>
-				<td><%= link_to 'Edit', edit_user_path(user) %></td>
+				<td class="actions">
+					<%= link_to 'Show', user %>
+					<%= link_to 'Edit', edit_user_path(user) %>
+				</td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
-
-<br />
 
 <%= link_to 'New User', new_user_path %>

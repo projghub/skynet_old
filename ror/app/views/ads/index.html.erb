@@ -1,6 +1,6 @@
 <h1>Listing Ads</h1>
 
-<table>
+<table class="list">
 	<thead>
 		<tr>
 			<th>Ad Group</th>
@@ -8,8 +8,7 @@
 			<th>Title</th>
 			<th>Destination URL</th>
 			<th>Enabled?</th>
-			<th></th>
-			<th></th>
+			<th class="action"></th>
 		</tr>
 	</thead>
 
@@ -21,13 +20,13 @@
 				<td><%= ad.title %></td>
 				<td><%= ad.destination_url %></td>
 				<td><%= ad.enabled ? "Yes" : "No" %></td>
-				<td><%= link_to 'Show', ad %></td>
-				<td><%= link_to 'Edit', edit_ad_path(ad) %></td>
+				<td class="actions">
+					<%= link_to 'Show', ad %>
+					<%= link_to 'Edit', edit_ad_path(ad) %>
+				</td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
-
-<br />
 
 <%= link_to 'New Ad', new_ad_path %>

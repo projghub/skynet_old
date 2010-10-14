@@ -65,7 +65,7 @@ table thead th
 table th,
 table td
 {
-	padding: 3px;
+	padding: 4px;
 }
 p
 {
@@ -91,29 +91,44 @@ table.form
 {
 	margin-bottom: 10px;
 }
+table.list
+{
+	margin-bottom: 10px;
+	border: 1px solid #d8d8d8;
+}
 table.form .field th,
 table.form .field td,
 table.form .actions td
 {
-	padding: 4px;
 	border: 1px solid #d8d8d8;
 }
 table.form .field th
 {
 	width: 20%;
+}
+table.form .field th,
+table.list thead th
+{
 	background-color: #f4f8ff;
 }
 table.form .field:nth-child(even) th
 {
 	background-color: #e4efff
 }
-table.form .field td
+table.form .field td,
+table.list tbody tr
 {
 	background-color: #ffffff;
 }
-table.form .field:nth-child(even) td
+table.form .field:nth-child(even) td,
+table.list tbody tr:nth-child(even)
 {
 	background-color: #f4f4f4;
+}
+table.list .actions
+{
+	width: 10%;
+	text-align: right;
 }
 #container
 {
