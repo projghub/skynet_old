@@ -13,15 +13,15 @@
 
 	<table class="form">
 		<tr class="field">
-			<th><%= f.label :ad_group_id, "Ad Group" %></th>
+			<th><%= raw require(f.label :ad_group_id, "Ad Group") %></th>
 			<td><%= f.select :ad_group_id, AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).all.collect{ |ag| [ag.name, ag.id] } %></td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :ad_type_id, "Ad Type" %></th>
+			<th><%= raw require(f.label :ad_type_id, "Ad Type") %></th>
 			<td><%= f.select :ad_type_id, AdType.all.collect{ |at| ["#{at.label} (#{at.name})", at.id] } %></td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :title %></th>
+			<th><%= raw require(f.label :title) %></th>
 			<td><%= f.text_field :title %></td>
 		</tr>
 		<tr class="field">
@@ -30,18 +30,21 @@
 		</tr>
 		<tr class="field">
 			<th><%= f.label :media_url, "Media URL" %></th>
-			<td><%= f.text_field :media_url %></td>
+			<td>
+				<%= f.text_field :media_url %><br />
+				<em>Media URL will be automatically filled in if you upload media.</em>
+			</td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :description_line1, "Description Line 1" %></th>
+			<th><%= raw require(f.label :description_line1, "Description Line 1") %></th>
 			<td><%= f.text_field :description_line1 %></td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :description_line2, "Description Line 2" %></th>
+			<th><%= raw require(f.label :description_line2, "Description Line 2") %></th>
 			<td><%= f.text_field :description_line2 %></td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :description %></th>
+			<th><%= raw require(f.label :description) %></th>
 			<td><%= f.text_field :description %></td>
 		</tr>
 		<tr class="field">
@@ -49,7 +52,7 @@
 			<td><%= f.text_field :display_url %></td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :destination_url, "Destination URL" %></th>
+			<th><%= raw require(f.label :destination_url, "Destination URL") %></th>
 			<td><%= f.text_field :destination_url %></td>
 		</tr>
 		<tr class="field">

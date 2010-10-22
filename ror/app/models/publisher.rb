@@ -1,7 +1,7 @@
 class Publisher < ActiveRecord::Base
 	attr_protected :access_hash
 	has_many :serving_stats
-	validates_presence_of :name, :website, :phone, :contact_name
+	validates_presence_of :name
 	after_validation :set_access_hash
 
 	def set_access_hash

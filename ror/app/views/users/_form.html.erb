@@ -13,19 +13,19 @@
 
 	<table class="form">
 		<tr class="field">
-			<th><%= f.label :username %></th>
+			<th><%= raw require(f.label :username) %></th>
 			<td><%= f.text_field :username %></td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :password %></th>
+			<th><%= @user.new_record? ? raw(require(f.label :password)) : f.label(:password) %></th>
 			<td><%= f.password_field :password %></td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :password_confirmation, "Password Confirmation" %></th>
+			<th><%= @user.new_record? ? raw(require(f.label :password_confirmation, "Password Confirmation")) : f.label(:password_confirmation, "Password Confirmation") %></th>
 			<td><%= f.password_field :password_confirmation %></td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :email %></th>
+			<th><%= raw require(f.label :email) %></th>
 			<td><%= f.text_field :email %></td>
 		</tr>
 		<tr class="field">

@@ -135,6 +135,10 @@ table.reports .value
 {
 	text-align: right;
 }
+.required
+{
+	color: #990000;
+}
 #container
 {
 	min-width: 900px;

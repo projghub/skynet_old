@@ -7,7 +7,7 @@ class Ad < ActiveRecord::Base
 		:path => ":rails_root/public/assets/ads/:id/:style/:filename",
 		:url => "/assets/ads/:id/:style/:filename"
 	has_many :serving_stats
-	validates_presence_of :ad_group_id, :ad_type_id, :title, :description_line1, :description_line2, :description, :display_url, :destination_url
+	validates_presence_of :ad_group_id, :ad_type_id, :title, :description_line1, :description_line2, :description, :destination_url
 	validate :valid_ad_group_id
 
 	def valid_ad_group_id

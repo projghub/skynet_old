@@ -13,11 +13,11 @@
 
 	<table class="form">
 		<tr class="field">
-			<th><%= f.label :name %></th>
+			<th><%= raw require(f.label :name) %></th>
 			<td><%= f.text_field :name %></td>
 		</tr>
 		<tr class="field">
-			<th><%= f.label :campaign_id %></th>
+			<th><%= raw require(f.label :campaign_id) %></th>
 			<td><%= f.select :campaign_id, Campaign.where(:account_id => @auth_user.account_id).all.collect{ |c| [c.name, c.id] } %></td>
 		</tr>
 		<tr class="actions">
