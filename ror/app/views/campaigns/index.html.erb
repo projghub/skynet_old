@@ -17,6 +17,7 @@
 				<td class="actions">
 					<%= link_to 'Show', campaign %>
 					<%= link_to 'Edit', edit_campaign_path(campaign) %>
+					<%= link_to 'Delete', campaign, :confirm => "Are you sure you want to delete this record?", :method => :delete %>
 				</td>
 			</tr>
 		<% end %>

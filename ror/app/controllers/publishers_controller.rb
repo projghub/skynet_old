@@ -71,13 +71,13 @@ class PublishersController < AuthenticateController
 
 	# DELETE /publishers/1
 	# DELETE /publishers/1.xml
-	#def destroy
-	#	@publisher = Publisher.find(params[:id])
-	#	@publisher.destroy
+	def destroy
+		@publisher = Publisher.find(params[:id])
+		@publisher.update_attributes({:enabled => false, :deleted_at => Time.now})
 
-	#	respond_to do |format|
-	#		format.html { redirect_to(publishers_url) }
-	#		format.xml  { head :ok }
-	#	end
-	#end
+		respond_to do |format|
+			format.html { redirect_to(publishers_url) }
+			format.xml  { head :ok }
+		end
+	end
 end

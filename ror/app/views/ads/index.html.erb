@@ -23,6 +23,7 @@
 				<td class="actions">
 					<%= link_to 'Show', ad %>
 					<%= link_to 'Edit', edit_ad_path(ad) %>
+					<%= link_to 'Delete', ad, :confirm => "Are you sure you want to delete this record?", :method => :delete %>
 				</td>
 			</tr>
 		<% end %>

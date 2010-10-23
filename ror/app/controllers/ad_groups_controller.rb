@@ -73,13 +73,14 @@ class AdGroupsController < AuthenticateController
 
 	# DELETE /ad_groups/1
 	# DELETE /ad_groups/1.xml
-	#def destroy
-	#	@ad_group = AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
-	#	@ad_group.destroy
+	def destroy
+		@ad_group = AdGroup.includes(:campaign).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
+		@ad_group.user_account_id = @auth_user.account_id
+		@ad_group.update_attributes({:deleted_at => Time.now})
 
-	#	respond_to do |format|
-	#		format.html { redirect_to(ad_groups_url) }
-	#		format.xml  { head :ok }
-	#	end
-	#end
+		respond_to do |format|
+			format.html { redirect_to(ad_groups_url) }
+			format.xml  { head :ok }
+		end
+	end
 end

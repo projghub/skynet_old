@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101012213706) do
+ActiveRecord::Schema.define(:version => 20101022223313) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20101012213706) do
     t.integer  "campaign_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "ad_groups", ["campaign_id"], :name => "campaign_id_index"
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20101012213706) do
     t.integer  "media_file_size"
     t.datetime "media_updated_at"
     t.integer  "ad_type_id",         :null => false
+    t.datetime "deleted_at"
   end
 
   add_index "ads", ["ad_group_id"], :name => "ad_group_id_index"
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20101012213706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id", :null => false
+    t.datetime "deleted_at"
   end
 
   add_index "campaigns", ["account_id"], :name => "index_campaigns_on_account_id"
@@ -82,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20101012213706) do
     t.boolean  "enabled",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "publishers", ["access_hash", "enabled"], :name => "access_hash_and_enabled_index", :unique => true
@@ -138,6 +142,7 @@ ActiveRecord::Schema.define(:version => 20101012213706) do
     t.boolean  "enabled",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["account_id"], :name => "index_users_on_account_id"

@@ -72,13 +72,14 @@ class UsersController < AuthenticateController
 
 	# DELETE /users/1
 	# DELETE /users/1.xml
-	#def destroy
-	#	@user = User.where(:account_id => @auth_user.account_id).find(params[:id])
-	#	@user.destroy
+	def destroy
+		@user = User.where(:account_id => @auth_user.account_id).find(params[:id])
+		@user.current_user_id = @auth_user.id
+		@user.update_attributes({:enabled => false, :deleted_at => Time.now})
 
-	#	respond_to do |format|
-	#		format.html { redirect_to(users_url) }
-	#		format.xml  { head :ok }
-	#	end
-	#end
+		respond_to do |format|
+			format.html { redirect_to(users_url) }
+			format.xml  { head :ok }
+		end
+	end
 end

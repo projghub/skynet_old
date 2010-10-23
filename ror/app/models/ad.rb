@@ -9,6 +9,7 @@ class Ad < ActiveRecord::Base
 	has_many :serving_stats
 	validates_presence_of :ad_group_id, :ad_type_id, :title, :description_line1, :description_line2, :description, :destination_url
 	validate :valid_ad_group_id
+	default_scope where(:deleted_at => nil)
 
 	def valid_ad_group_id
 		errors.add :ad_group_id, "must be valid" unless !user_account_id.nil? && AdGroup.find(self.ad_group_id).campaign.account_id == user_account_id

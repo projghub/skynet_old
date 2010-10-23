@@ -72,13 +72,13 @@ class CampaignsController < AuthenticateController
 
 	# DELETE /campaigns/1
 	# DELETE /campaigns/1.xml
-	#def destroy
-	#	@campaign = Campaign.where(:account_id => @auth_user.account_id).find(params[:id])
-	#	@campaign.destroy
+	def destroy
+		@campaign = Campaign.where(:account_id => @auth_user.account_id).find(params[:id])
+		@campaign.update_attributes({:enabled => false, :deleted_at => Time.now})
 
-	#	respond_to do |format|
-	#		format.html { redirect_to(campaigns_url) }
-	#		format.xml  { head :ok }
-	#	end
-	#end
+		respond_to do |format|
+			format.html { redirect_to(campaigns_url) }
+			format.xml  { head :ok }
+		end
+	end
 end

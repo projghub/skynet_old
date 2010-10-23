@@ -25,6 +25,7 @@
 				<td class="actions">
 					<%= link_to 'Show', publisher %>
 					<%= link_to 'Edit', edit_publisher_path(publisher) %>
+					<%= link_to 'Delete', publisher, :confirm => "Are you sure you want to delete this record?", :method => :delete %>
 				</td>
 			</tr>
 		<% end %>

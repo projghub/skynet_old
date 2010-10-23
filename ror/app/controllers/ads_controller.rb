@@ -75,15 +75,16 @@ class AdsController < AuthenticateController
 
 	# DELETE /ads/1
 	# DELETE /ads/1.xml
-	#def destroy
-	#  @ad = Ad.includes({:ad_group => :campaign}, :ad_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
-	#  @ad.destroy
+	def destroy
+		@ad = Ad.includes({:ad_group => :campaign}, :ad_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
+		@ad.user_account_id = @auth_user.account_id
+		@ad.update_attributes({:enabled => false, :deleted_at => Time.now})
 
-	#  respond_to do |format|
-	#	  format.html { redirect_to(ads_url) }
-	#	  format.xml  { head :ok }
-	#  end
-	#end
+		respond_to do |format|
+			format.html { redirect_to(ads_url) }
+			format.xml  { head :ok }
+		end
+	end
 
 	protected
 	def upload_media
