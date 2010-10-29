@@ -128,7 +128,7 @@ table.reports tbody tr:nth-child(even)
 }
 table.list .actions
 {
-	width: 10%;
+	width: 15%;
 	text-align: right;
 }
 table.reports .value
