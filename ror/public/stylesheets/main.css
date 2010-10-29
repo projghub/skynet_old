@@ -112,7 +112,7 @@ table.reports thead th
 }
 table.form .field:nth-child(even) th
 {
-	background-color: #e4efff
+	background-color: #e4efff;
 }
 table.form .field td,
 table.list tbody tr,
