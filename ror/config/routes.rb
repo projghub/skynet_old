@@ -12,6 +12,8 @@ Ror::Application.routes.draw do
 	resources :campaigns
 	resources :ad_groups
 	resources :ads
+	match "/account" => "account#edit"
+	match "/account/update" => "account#update"
 	match "/reports" => "reports#index"
 	match "/reports/:action" => "reports"
 

@@ -139,6 +139,21 @@ table.reports .value
 {
 	color: #990000;
 }
+.flash-message
+{
+	padding: 10px;
+	margin-bottom: 10px;
+}
+#flash-notice
+{
+	background-color: #f0fff7;
+	border: 1px solid #d0f0d9;
+}
+#flash-error
+{
+	background-color: #fff0f0;
+	border: 1px solid #f0d0d0;
+}
 #container
 {
 	min-width: 900px;

@@ -1,0 +1,31 @@
+<%= form_for(@account, :url => {:controller => "account", :action => "update"}) do |f| %>
+	<% if @account.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@account.errors.count, "error") %> prohibited this ad from being saved:</h2>
+
+			<ul>
+				<% @account.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<table class="form">
+		<tr class="field">
+			<th><%= raw require(f.label :name) %></th>
+			<td><%= f.text_field :name %></td>
+		</tr>
+		<tr class="field">
+			<th><%= raw require(f.label :email) %></th>
+			<td><%= f.text_field :email %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :enabled %></th>
+			<td><%= f.check_box :enabled %></td>
+		</tr>
+		<tr class="actions">
+			<td colspan="2"><%= f.submit %></td>
+		</tr>
+	</table>
+<% end %>
