@@ -104,23 +104,23 @@ table.form .field th
 {
 	width: 20%;
 }
-table.form .field th,
-table.list thead th,
-table.reports thead th
+table.form .field > th,
+table.list thead > tr > th,
+table.reports thead > tr > th
 {
 	background-color: #f4f8ff;
 }
-table.form .field:nth-child(even) th
+table.form .field:nth-child(even) > th
 {
 	background-color: #e4efff;
 }
-table.form .field td,
-table.list tbody tr,
-table.reports tbody tr
+table.form .field > td,
+table.list tbody > tr > tr,
+table.reports tbody > tr > tr
 {
 	background-color: #ffffff;
 }
-table.form .field:nth-child(even) td,
+table.form .field:nth-child(even) > td,
 table.list tbody tr:nth-child(even),
 table.reports tbody tr:nth-child(even)
 {

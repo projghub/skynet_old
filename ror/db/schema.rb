@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101022223313) do
+ActiveRecord::Schema.define(:version => 20101029192918) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -63,6 +63,32 @@ ActiveRecord::Schema.define(:version => 20101022223313) do
   add_index "ads", ["ad_type_id"], :name => "index_ads_on_ad_type_id"
   add_index "ads", ["enabled"], :name => "enabled_index"
   add_index "ads", ["enabled"], :name => "template_type_id_and_enabled_index"
+
+  create_table "ads_attribute_values", :id => false, :force => true do |t|
+    t.integer "ad_id",              :null => false
+    t.integer "attribute_value_id", :null => false
+  end
+
+  add_index "ads_attribute_values", ["ad_id", "attribute_value_id"], :name => "ad_id_attribute_value_id_index", :unique => true
+
+  create_table "attribute_values", :force => true do |t|
+    t.integer  "attribute_id", :null => false
+    t.string   "value",        :null => false
+    t.string   "label",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attribute_values", ["attribute_id", "value"], :name => "attribute_id_value_index", :unique => true
+
+  create_table "attributes", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "label",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attributes", ["name"], :name => "name_index", :unique => true
 
   create_table "campaigns", :force => true do |t|
     t.string   "name",       :null => false

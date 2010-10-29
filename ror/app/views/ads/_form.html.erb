@@ -55,6 +55,23 @@
 			<th><%= raw require(f.label :destination_url, "Destination URL") %></th>
 			<td><%= f.text_field :destination_url %></td>
 		</tr>
+		<% Attribute.all.each do |a| %>
+			<tr class="field">
+				<th><%= a.label %></th>
+				<td>
+					<table>
+						<tbody>
+							<% a.attribute_values.each do |av| %>
+								<tr class="field">
+									<th><%= label_tag "ad_attribute_value_ids_#{av.id}", av.label %></th>
+									<td><%= check_box_tag "ad[attribute_value_ids][]", av.id, @ad.has_attribute_value(av), :id => "ad_attribute_value_ids_#{av.id}" %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		<% end %>
 		<tr class="field">
 			<th><%= f.label :enabled %></th>
 			<td><%= f.check_box :enabled %></td>

@@ -59,6 +59,7 @@ class AdsController < AuthenticateController
 	# PUT /ads/1.xml
 	def update
 		@ad = Ad.includes({:ad_group => :campaign}, :ad_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
+		@ad.attribute_values = []
 		@ad.user_account_id = @auth_user.account_id
 
 		respond_to do |format|
