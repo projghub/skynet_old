@@ -40,5 +40,14 @@
 	<code><%= escape_once render(:partial => "publishers/integration_iframe", :locals => {:publisher => @publisher}) %></code>
 </p>
 
+<p>
+	<b>Integration Parameters:</b><br />
+	<span class="required">* pub=<%= @publisher.access_hash %></span><br />
+	<span class="required">* tid=<%= @templates.collect{ |t| t.id }.join(",") %></span><br />
+	<% Attribute.all.each do |a| %>
+		<span>a[<%= a.name %>]=<%= a.attribute_values.collect{ |av| av.value }.join(",") %></span><br />
+	<% end %>
+</p>
+
 <%= link_to 'Edit', edit_publisher_path(@publisher) %> |
 <%= link_to 'Back', publishers_path %>

@@ -14,6 +14,7 @@ class PublishersController < AuthenticateController
 	# GET /publishers/1.xml
 	def show
 		@publisher = Publisher.find(params[:id])
+		@templates = Template.all
 
 		respond_to do |format|
 			format.html # show.html.erb
