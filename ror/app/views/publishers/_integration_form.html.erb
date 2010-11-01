@@ -1,0 +1,44 @@
+<%= form_for @publisher_integration, :as => "integration", :url => {:controller => "publishers", :action => "integration", :id => @publisher.id} do |f| %>
+	<% if @publisher_integration.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@publisher_integration.errors.count, "error") %> prohibited this ad from being saved:</h2>
+
+			<ul>
+				<% @publisher_integration.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<table class="form">
+		<tr class="field">
+			<th><%= raw require(f.label(:tid, "Template")) %></th>
+			<td><%= f.select :tid, templates.collect{ |t| [t.name, t.id] } %></td>
+		</tr>
+		<tr class="field">
+			<th><%= raw require(f.label(:type, "HTML Type")) %></th>
+			<td><%= f.select :type, types.collect{ |t| [t, t] } %></td>
+		</tr>
+		<% attributes.each do |a| %>
+			<tr class="field">
+				<th><%= a.label %></th>
+				<td>
+					<table>
+						<tbody>
+							<% a.attribute_values.each do |av| %>
+								<tr class="field">
+									<th><%= label_tag "integration_attribute_value_ids_#{av.id}", av.label %></th>
+									<td><%= check_box_tag "integration[attribute_value_ids][]", av.id, publisher_integration.attribute_value_ids.include?(av.id.to_s), :id => "integration_attribute_value_ids_#{av.id}" %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+		<% end %>
+		<tr class="actions">
+			<td colspan="2"><%= f.submit "Generate Integration HTML" %></td>
+		</tr>
+	</table>
+<% end %>

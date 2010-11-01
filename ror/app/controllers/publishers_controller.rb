@@ -15,6 +15,8 @@ class PublishersController < AuthenticateController
 	def show
 		@publisher = Publisher.find(params[:id])
 		@templates = Template.all
+		@types = %w(script iframe)
+		@attributes = Attribute.all
 
 		respond_to do |format|
 			format.html # show.html.erb
@@ -80,5 +82,13 @@ class PublishersController < AuthenticateController
 			format.html { redirect_to(publishers_url) }
 			format.xml  { head :ok }
 		end
+	end
+
+	def integration
+		@publisher = Publisher.find(params[:id])
+		@templates = Template.all
+		@types = %w(script iframe)
+		@attributes = Attribute.all
+		@publisher_integration = PublisherIntegration.new(params[:integration])
 	end
 end

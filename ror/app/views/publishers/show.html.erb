@@ -29,24 +29,8 @@
 </p>
 
 <p>
-	<b>Integration Script:</b>
-	<em>In the following script, the supplied div element is optional. You can replace <code>id: '_sn_block'</code> with any other element's id. Also, you can replace <code>tid: '2'</code> with the id of any valid template.</em><br />
-	<code><%= escape_once render(:partial => "publishers/integration_script", :locals => {:publisher => @publisher}) %></code>
-</p>
-
-<p>
-	<b>Integration IFrame:</b>
-	<em>In the following html, you can replace <code>tid=2</code> with the id of any valid template.</em><br />
-	<code><%= escape_once render(:partial => "publishers/integration_iframe", :locals => {:publisher => @publisher}) %></code>
-</p>
-
-<p>
-	<b>Integration Parameters:</b><br />
-	<span class="required">* pub=<%= @publisher.access_hash %></span><br />
-	<span class="required">* tid=<%= @templates.collect{ |t| t.id }.join(",") %></span><br />
-	<% Attribute.all.each do |a| %>
-		<span>a[<%= a.name %>]=<%= a.attribute_values.collect{ |av| av.value }.join(",") %></span><br />
-	<% end %>
+	<b>Integration:</b>
+	<%= render :partial => "publishers/integration_form", :locals => {:publisher => @publisher, :templates => @templates, :types => @types, :attributes => @attributes, :publisher_integration => @publisher_integration} %>
 </p>
 
 <%= link_to 'Edit', edit_publisher_path(@publisher) %> |

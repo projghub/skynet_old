@@ -11,6 +11,7 @@ Ror::Application.routes.draw do
 
 	resources :users
 	resources :publishers
+	match "/publishers/:id/integration" => "publishers#integration"
 	resources :campaigns
 	resources :ad_groups
 	resources :ads
