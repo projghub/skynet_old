@@ -15,7 +15,7 @@ class PublishersController < AuthenticateController
 	def show
 		@publisher = Publisher.find(params[:id])
 		@templates = Template.all
-		@types = %w(script iframe)
+		@types = %w(iframe script)
 		@attributes = Attribute.all
 		@publisher_integration = PublisherIntegration.new()
 
@@ -88,7 +88,7 @@ class PublishersController < AuthenticateController
 	def integration
 		@publisher = Publisher.find(params[:id])
 		@templates = Template.all
-		@types = %w(script iframe)
+		@types = %w(iframe script)
 		@attributes = Attribute.all
 		@publisher_integration = PublisherIntegration.new(params[:integration])
 	end
