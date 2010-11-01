@@ -17,6 +17,7 @@ class PublishersController < AuthenticateController
 		@templates = Template.all
 		@types = %w(script iframe)
 		@attributes = Attribute.all
+		@publisher_integration = PublisherIntegration.new()
 
 		respond_to do |format|
 			format.html # show.html.erb
