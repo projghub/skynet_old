@@ -5,3 +5,5 @@
 <% end %>
 
 <%= render :partial => "publishers/integration_form", :locals => {:publisher => @publisher, :templates => @templates, :types => @types, :attributes => @attributes, :publisher_integration => @publisher_integration} %>
+
+<%= link_to 'Back to view', @publisher %>
