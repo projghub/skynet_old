@@ -1,7 +1,7 @@
 <h1>Integration for Publisher: <%= @publisher.name %></h1>
 
 <% if (@publisher_integration.valid?) %>
-	<code><%= escape_once(render(:partial => "publishers/integration_#{@publisher_integration.type}", :locals => {:publisher => @publisher, :publisher_integration => @publisher_integration})) %></code>
+	<code><%= escape_once(render(:partial => "publishers/integration_#{@publisher_integration.type}", :locals => {:publisher => @publisher, :template => @template, :publisher_integration => @publisher_integration})) %></code>
 <% end %>
 
 <%= render :partial => "publishers/integration_form", :locals => {:publisher => @publisher, :templates => @templates, :types => @types, :attributes => @attributes, :publisher_integration => @publisher_integration} %>

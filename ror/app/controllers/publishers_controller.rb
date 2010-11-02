@@ -91,5 +91,6 @@ class PublishersController < AuthenticateController
 		@types = %w(iframe script)
 		@attributes = Attribute.all
 		@publisher_integration = PublisherIntegration.new(params[:integration])
+		@template = Template.find(@publisher_integration.tid) rescue Template.new({:width => "0", :height => "0"})
 	end
 end
