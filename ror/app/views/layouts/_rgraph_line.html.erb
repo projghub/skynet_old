@@ -1,0 +1,20 @@
+<canvas id="<%= id %>" width="<%= width %>" height="<%= height %>">Canvas Element is not supported in your browser. :(</canvas>
+
+<%= javascript_include_tag "rgraph/RGraph.common.core.js", "rgraph/RGraph.line.js" %>
+<script type="text/javascript">
+	window.onload = function () {
+		var data = [<%= totals.collect{ |r| "#{r[1][:value]}" }.join(",") %>];
+		var line = new RGraph.Line("<%= id %>", data);
+		line.Set('chart.background.barcolor1', 'rgba(255,255,255,1)');
+		line.Set('chart.background.barcolor2', 'rgba(255,255,255,1)');
+		line.Set('chart.background.grid.color', 'rgba(238,238,238,1)');
+		line.Set('chart.colors', ['rgba(255,0,0,1)']);
+		line.Set('chart.linewidth', 2);
+		line.Set('chart.hmargin', 5);
+		line.Set('chart.labels', [<%= graph_labels(totals, 5) %>]);
+		line.Set('chart.text.angle', 45);
+		line.Set('chart.gutter', 40);
+		line.Draw();
+	}
+</script>
+

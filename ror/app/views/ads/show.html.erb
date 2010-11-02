@@ -1,3 +1,7 @@
+<div style="float:right; width:400px; height: 150px;">
+	<%= render :partial => "layouts/rgraph_line", :locals => {:id => "ad_daily_totals_#{@ad.id}", :width => "400", :height => "150", :totals => @ad.daily_totals} %>
+</div>
+
 <p>
   <b>Ad Group:</b>
   <%= @ad.ad_group.name %>

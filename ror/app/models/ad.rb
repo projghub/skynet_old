@@ -31,4 +31,20 @@ class Ad < ActiveRecord::Base
 		end
 		return false
 	end
+
+	def daily_totals(start_offset = 30, end_offset = 0)
+		now = Time.now.getutc
+		tmp_start = now - (start_offset * 86400)
+		tmp_end = now - (end_offset * 86400)
+		start_time = Time.utc(tmp_start.year, tmp_start.month, tmp_start.day)
+		end_time = Time.utc(tmp_end.year, tmp_end.month, tmp_end.day, 23, 59, 59)
+		totals = {}
+		ServingStat.select("serving_stats.time_served as time_served, sum(serving_stats.impressions) as impressions, sum(serving_stats.clicks) as clicks").where("serving_stats.time_served >= ? and serving_stats.time_served <= ? and serving_stats.ad_id = ?", start_time.to_i, end_time.to_i, self.id).group("serving_stats.ad_id, serving_stats.time_served div 86400").all.each do |stat|
+			totals[Time.at(stat.time_served.to_i).getutc.strftime("%Y-%m-%d")] = {:label => Time.at(stat.time_served.to_i).getutc.strftime("%e"), :value => (stat.impressions.to_f > 0.0 ? stat.clicks.to_f / stat.impressions.to_f : 0.0)}
+		end
+		(start_time.to_i..end_time.to_i).step(86400).each do |i|
+			totals[Time.at(i).getutc.strftime("%Y-%m-%d")] ||= {:label => Time.at(i).getutc.strftime("%e"), :value => 0.0}
+		end
+		totals.sort
+	end
 end
