@@ -28,11 +28,11 @@ class ServingStat < ActiveRecord::Base
 	def self.build_hash(stat)
 		Digest::SHA1.hexdigest(
 			ServingStat::SALT+
-			stat.publisher_id.to_s+
-			stat.template_id.to_s+
-			stat.ad_id.to_s+
-			stat.position.to_s+
-			stat.time_served.to_i.to_s
+			("%011d" % stat.publisher_id)+
+			("%011d" % stat.template_id)+
+			("%011d" % stat.ad_id)+
+			("%011d" % stat.position)+
+			("%011d" % stat.time_served)
 		)
 	end
 
