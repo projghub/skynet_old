@@ -1,6 +1,6 @@
 class Ad < ActiveRecord::Base
-	attr_accessor :current_stat, :user_account_id
-	attr_protected :current_stat, :user_account_id, :attribute_values
+	attr_accessor :current_stat, :user_account_id, :attribute_value_ids, :publisher_ids
+	attr_protected :current_stat, :user_account_id, :attribute_values, :publishers
 	belongs_to :ad_group
 	belongs_to :ad_type
 	has_attached_file :media,
@@ -8,27 +8,27 @@ class Ad < ActiveRecord::Base
 		:url => "/assets/ads/:id/:style/:filename"
 	has_many :serving_stats
 	has_and_belongs_to_many :attribute_values
+	has_and_belongs_to_many :publishers
 	has_many :base_for_templates, :class_name => "Template", :foreign_key => "base_ad_id"
 	validates_presence_of :ad_group_id, :ad_type_id, :title, :description_line1, :description_line2, :description, :destination_url
 	validate :valid_ad_group_id
+	before_update :save_attribute_value_ids, :save_publisher_ids
 	default_scope where(:deleted_at => nil)
 
 	def valid_ad_group_id
 		errors.add :ad_group_id, "must be valid" unless !user_account_id.nil? && AdGroup.find(self.ad_group_id).campaign.account_id == user_account_id
 	end
 
-	def attribute_value_ids=(attribute_value_ids)
-		attribute_value_ids.each do |id|
-			attribute_value = AttributeValue.find(id) rescue nil
-			unless attribute_value.nil?
-				self.attribute_values << attribute_value
-			end
-		end
-	end
-
 	def has_attribute_value(attribute_value)
 		self.attribute_values.each do |av|
-			return true if av == attribute_value
+			return true if av.id == attribute_value.id
+		end
+		return false
+	end
+
+	def has_publisher(publisher)
+		self.publishers.each do |p|
+			return true if p.id == publisher.id
 		end
 		return false
 	end
@@ -47,5 +47,27 @@ class Ad < ActiveRecord::Base
 			totals[Time.at(i).getutc.strftime("%Y-%m-%d")] ||= {:label => Time.at(i).getutc.strftime("%e"), :value => 0.0}
 		end
 		totals.sort
+	end
+
+	def save_attribute_value_ids
+		attribute_values = []
+		attribute_value_ids.each do |id|
+			attribute_value = AttributeValue.find(id) rescue nil
+			unless attribute_value.nil?
+				attribute_values << attribute_value
+			end
+		end
+		self.attribute_values = attribute_values
+	end
+
+	def save_publisher_ids
+		publishers = []
+		publisher_ids.each do |id|
+			publisher = Publisher.find(id) rescue nil
+			unless publisher.nil?
+				publishers << publisher
+			end
+		end
+		self.publishers = publishers
 	end
 end

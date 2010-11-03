@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101102224301) do
+ActiveRecord::Schema.define(:version => 20101103171115) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(:version => 20101102224301) do
   end
 
   add_index "ads_attribute_values", ["ad_id", "attribute_value_id"], :name => "ad_id_attribute_value_id_index", :unique => true
+
+  create_table "ads_publishers", :id => false, :force => true do |t|
+    t.integer "ad_id",        :null => false
+    t.integer "publisher_id", :null => false
+  end
+
+  add_index "ads_publishers", ["ad_id", "publisher_id"], :name => "ad_id_publisher_id_index", :unique => true
 
   create_table "attribute_values", :force => true do |t|
     t.integer  "attribute_id", :null => false

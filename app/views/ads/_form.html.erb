@@ -73,6 +73,21 @@
 			</tr>
 		<% end %>
 		<tr class="field">
+			<th>Publishers</th>
+			<td>
+					<table>
+						<tbody>
+							<% Publisher.all.each do |p| %>
+								<tr class="field">
+									<th><%= label_tag "ad_publisher_ids_#{p.id}", p.name %></th>
+									<td><%= check_box_tag "ad[publisher_ids][]", p.id, @ad.has_publisher(p), :id => "ad_publisher_ids_#{p.id}" %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+			</td>
+		</tr>
+		<tr class="field">
 			<th><%= f.label :enabled %></th>
 			<td><%= f.check_box :enabled %></td>
 		</tr>

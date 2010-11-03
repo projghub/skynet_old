@@ -6,7 +6,7 @@ class ServeController < ApplicationController
 		@publisher = Publisher.find_by_access_hash_and_enabled params[:pub], true
 		raise ActiveRecord::RecordNotFound if @publisher.nil?
 		@template = Template.find params[:tid]
-		@ads = @template.select_ads params[:a]
+		@ads = @template.select_ads(@publisher, params[:a])
 		ServingStat.impress_ads(@publisher, @template, @ads)
 		render @template.file
 	end

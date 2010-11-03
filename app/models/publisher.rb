@@ -1,6 +1,7 @@
 class Publisher < ActiveRecord::Base
 	attr_protected :access_hash
 	has_many :serving_stats
+	has_and_belongs_to_many :ads
 	validates_presence_of :name
 	after_validation :set_access_hash
 	default_scope where(:deleted_at => nil)
