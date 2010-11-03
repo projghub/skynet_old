@@ -46,4 +46,9 @@ Ror::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+	config.middleware.use ::ExceptionNotifier,
+		:email_prefix => "Skynet-Errors: ",
+		:sender_address => %w{programmers@projectedinc.com},
+		:exception_recipients => %w{programmers@projectedinc.com}
 end
