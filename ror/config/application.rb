@@ -38,5 +38,10 @@ module Ror
 
 		# Configure sensitive parameters which will be filtered from the log file.
 		config.filter_parameters += [:password]
+
+		config.middleware.use ::ExceptionNotifier,
+			:email_prefix => "Skynet-Errors: ",
+			:sender_address => %w{programmers@projectedinc.com},
+			:exception_recipients => %w{programmers@projectedinc.com}
 	end
 end
