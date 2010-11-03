@@ -12,7 +12,7 @@ class ServingStat < ActiveRecord::Base
 			position += 1
 			stat = ServingStat.where("publisher_id = ? AND template_id = ? AND ad_id = ? AND position = ? AND time_served = ?", publisher.id, template.id, ad.id, position, now.to_i).first(:lock => true)
 			if stat.nil?
-				stat = ServingStat.new(:publisher => publisher, :template => template, :ad => ad, :time_served => now, :position => position, :impressions => 0, :clicks => 0)
+				stat = ServingStat.new(:publisher => publisher, :template => template, :ad => ad, :time_served => now.to_i, :position => position, :impressions => 0, :clicks => 0)
 				stat.assign_hash
 			end
 			stat.impress
@@ -22,7 +22,7 @@ class ServingStat < ActiveRecord::Base
 	end
 
 	def self.time_now
-		Time.now.getutc
+		Time.at((Time.now.getutc.to_i / 3600) * 3600).getutc
 	end
 
 	def self.build_hash(stat)

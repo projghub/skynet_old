@@ -8,6 +8,7 @@ class Ad < ActiveRecord::Base
 		:url => "/assets/ads/:id/:style/:filename"
 	has_many :serving_stats
 	has_and_belongs_to_many :attribute_values
+	has_many :base_for_templates, :class_name => "Template", :foreign_key => "base_ad_id"
 	validates_presence_of :ad_group_id, :ad_type_id, :title, :description_line1, :description_line2, :description, :destination_url
 	validate :valid_ad_group_id
 	default_scope where(:deleted_at => nil)

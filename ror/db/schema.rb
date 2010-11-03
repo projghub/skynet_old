@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101029192918) do
+ActiveRecord::Schema.define(:version => 20101102224301) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -155,9 +155,11 @@ ActiveRecord::Schema.define(:version => 20101029192918) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "ad_type_id", :null => false
+    t.integer  "base_ad_id"
   end
 
   add_index "templates", ["ad_type_id"], :name => "index_templates_on_ad_type_id"
+  add_index "templates", ["base_ad_id"], :name => "base_ad_id_index"
 
   create_table "users", :force => true do |t|
     t.integer  "account_id",    :null => false
