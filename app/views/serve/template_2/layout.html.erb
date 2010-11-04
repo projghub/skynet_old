@@ -1,5 +1,6 @@
 <% content_for :head do %>
 	<%= stylesheet_link_tag "template_2.css" %>
+	<%= javascript_include_tag "http://j.maxmind.com/app/geoip.js" if geolocate?(@ads) %>
 <% end %>
 <div class="sn-block">
 	<% @ads.each do |ad| %>

@@ -1,1 +1,1 @@
-<a href="<%= build_click_url ad %>" target="_blank"><strong><%= ad.title %></strong> - <%= ad.description %><br /><span class="sn-display-url"><%= ad.display_url %></span></a>
+<a href="<%= build_click_url ad %>" target="_blank"><strong><%= ad.geolocate ? raw(geolocate_replace(ad.title)) : ad.title %></strong> - <%= ad.geolocate ? raw(geolocate_replace(ad.description)) : ad.description %><br /><span class="sn-display-url"><%= ad.display_url %></span></a>
