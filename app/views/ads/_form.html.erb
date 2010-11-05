@@ -64,7 +64,7 @@
 							<% a.attribute_values.each do |av| %>
 								<tr class="field">
 									<th><%= label_tag "ad_attribute_value_ids_#{av.id}", av.label %></th>
-									<td><%= check_box_tag "ad[attribute_value_ids][]", av.id, @ad.has_attribute_value(av), :id => "ad_attribute_value_ids_#{av.id}" %></td>
+									<td><%= check_box_tag "ad[attribute_value_ids][]", av.id, @ad.attribute_values.include?(av), :id => "ad_attribute_value_ids_#{av.id}" %></td>
 								</tr>
 							<% end %>
 						</tbody>
@@ -80,7 +80,7 @@
 							<% Publisher.all.each do |p| %>
 								<tr class="field">
 									<th><%= label_tag "ad_publisher_ids_#{p.id}", p.name %></th>
-									<td><%= check_box_tag "ad[publisher_ids][]", p.id, @ad.has_publisher(p), :id => "ad_publisher_ids_#{p.id}" %></td>
+									<td><%= check_box_tag "ad[publisher_ids][]", p.id, @ad.publishers.include?(p), :id => "ad_publisher_ids_#{p.id}" %></td>
 								</tr>
 							<% end %>
 						</tbody>

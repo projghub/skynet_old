@@ -60,6 +60,8 @@ class AdsController < AuthenticateController
 	def update
 		@ad = Ad.includes({:ad_group => :campaign}, :ad_type).where("campaigns.account_id = ?", @auth_user.account_id).find(params[:id])
 		@ad.user_account_id = @auth_user.account_id
+		params[:ad][:attribute_value_ids] ||= []
+		params[:ad][:publisher_ids] ||= []
 
 		respond_to do |format|
 			if @ad.update_attributes(params[:ad])
