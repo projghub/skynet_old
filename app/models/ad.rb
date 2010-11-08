@@ -12,7 +12,7 @@ class Ad < ActiveRecord::Base
 	has_and_belongs_to_many :publishers
 	has_many :base_for_templates, :class_name => "Template", :foreign_key => "base_ad_id"
 	validates_presence_of :ad_group_id, :ad_type_id, :bid_type_id, :title, :description_line1, :description_line2, :description, :destination_url
-	validates_numericality_of :bid, :greater_than_or_equal_to => 1.00
+	validates_numericality_of :bid, :greater_than_or_equal_to => 0.5
 	validate :valid_ad_group_id
 	validate :valid_ad_type_id
 	validate :valid_bid_type_id
