@@ -11,6 +11,9 @@
 			<th class="value">Impressions</th>
 			<th class="value">Clicks</th>
 			<th class="value">Click-Through Rate</th>
+			<th class="value">Spent</th>
+			<th class="value">Avg. CPM</th>
+			<th class="value">Avg. CPC</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,6 +23,9 @@
 				<td class="value"><%= "%d" % (campaign.impressions || 0) %></td>
 				<td class="value"><%= "%d" % (campaign.clicks || 0) %></td>
 				<td class="value"><%= campaign.impressions == 0 ? "N/A" : ("%.1f%%" % ((campaign.clicks.to_f / campaign.impressions.to_f) * 100)) %>
+				<td class="value"><%= "$%04.2f" % (campaign.spent || 0) %></td>
+				<td class="value"><%= campaign.impressions == 0 ? "N/A" : ("$%04.2f" % ((campaign.spent.to_f / campaign.impressions.to_f) * 1000)) %></td>
+				<td class="value"><%= campaign.clicks == 0 ? "N/A" : ("$%04.2f" % (campaign.spent.to_f / campaign.clicks.to_f)) %></td>
 			</tr>
 		<% end %>
 	</tbody>
