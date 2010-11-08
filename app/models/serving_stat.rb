@@ -42,6 +42,7 @@ class ServingStat < ActiveRecord::Base
 
 	def impress
 		self.impressions += 1
+		self.spent += self.ad.bid.to_f if self.ad.bid_type.name == "cpm"
 	end
 
 	def click

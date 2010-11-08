@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101108185600) do
+ActiveRecord::Schema.define(:version => 20101108213926) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -138,16 +138,17 @@ ActiveRecord::Schema.define(:version => 20101108185600) do
   add_index "publishers", ["enabled"], :name => "enabled_index"
 
   create_table "serving_stats", :force => true do |t|
-    t.integer  "publisher_id", :null => false
-    t.integer  "template_id",  :null => false
-    t.integer  "ad_id",        :null => false
-    t.integer  "position",     :null => false
-    t.integer  "time_served",  :null => false
-    t.integer  "impressions",  :null => false
-    t.integer  "clicks",       :null => false
-    t.string   "hash",         :null => false
+    t.integer  "publisher_id",                                                 :null => false
+    t.integer  "template_id",                                                  :null => false
+    t.integer  "ad_id",                                                        :null => false
+    t.integer  "position",                                                     :null => false
+    t.integer  "time_served",                                                  :null => false
+    t.integer  "impressions",                                                  :null => false
+    t.integer  "clicks",                                                       :null => false
+    t.string   "hash",                                                         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "spent",        :precision => 10, :scale => 2, :default => 0.0, :null => false
   end
 
   add_index "serving_stats", ["ad_id"], :name => "ad_id_index"
