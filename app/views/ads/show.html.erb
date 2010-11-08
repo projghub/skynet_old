@@ -18,6 +18,21 @@
 </p>
 
 <p>
+  <b>Bid Type:</b>
+  <%= @ad.bid_type.name %> (<%= @ad.bid_type.label %>)
+</p>
+
+<p>
+  <b>Bid:</b>
+  <%= "%04.2f" % @ad.bid %>
+</p>
+
+<p>
+  <b>Daily Limit:</b>
+  <%= "%04.2f" % @ad.daily_limit %>
+</p>
+
+<p>
   <b>Media URL:</b>
   <%= @ad.media_url.empty? ? "(awaiting upload)" : link_to(@ad.media_url, @ad.media_url) %>
 </p>

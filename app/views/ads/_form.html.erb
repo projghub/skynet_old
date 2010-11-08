@@ -25,6 +25,18 @@
 			<td><%= f.text_field :title %></td>
 		</tr>
 		<tr class="field">
+			<th><%= raw require(f.label :bid_type_id, "Bid Type") %></th>
+			<td><%= f.select :bid_type_id, BidType.all.collect{ |bt| ["#{bt.name} (#{bt.label})", bt.id] } %></td>
+		</tr>
+		<tr class="field">
+			<th><%= raw require(f.label :bid) %></th>
+			<td><%= f.text_field :bid, :value => "%04.2f" % @ad.bid %></td>
+		</tr>
+		<tr class="field">
+			<th><%= f.label :daily_limit, "Daily Limit" %></th>
+			<td><%= f.text_field :daily_limit, :value => "%04.2f" % @ad.daily_limit %></td>
+		</tr>
+		<tr class="field">
 			<th><%= f.label :media %></th>
 			<td><%= f.file_field :media %></td>
 		</tr>

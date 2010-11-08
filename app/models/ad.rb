@@ -3,6 +3,7 @@ class Ad < ActiveRecord::Base
 	attr_protected :current_stat, :user_account_id, :attribute_values, :publishers
 	belongs_to :ad_group
 	belongs_to :ad_type
+	belongs_to :bid_type
 	has_attached_file :media,
 		:path => ":rails_root/public/assets/ads/:id/:style/:filename",
 		:url => "/assets/ads/:id/:style/:filename"
@@ -10,12 +11,23 @@ class Ad < ActiveRecord::Base
 	has_and_belongs_to_many :attribute_values
 	has_and_belongs_to_many :publishers
 	has_many :base_for_templates, :class_name => "Template", :foreign_key => "base_ad_id"
-	validates_presence_of :ad_group_id, :ad_type_id, :title, :description_line1, :description_line2, :description, :destination_url
+	validates_presence_of :ad_group_id, :ad_type_id, :bid_type_id, :title, :description_line1, :description_line2, :description, :destination_url
+	validates_numericality_of :bid, :greater_than_or_equal_to => 0.05
 	validate :valid_ad_group_id
+	validate :valid_ad_type_id
+	validate :valid_bid_type_id
 	default_scope where(:deleted_at => nil)
 
 	def valid_ad_group_id
-		errors.add :ad_group_id, "must be valid" unless !user_account_id.nil? && AdGroup.find(self.ad_group_id).campaign.account_id == user_account_id
+		errors.add :ad_group_id, "must be valid" unless !user_account_id.nil? && !(AdGroup.find(self.ad_group_id) rescue nil).nil? && AdGroup.find(self.ad_group_id).campaign.account_id == user_account_id
+	end
+
+	def valid_ad_type_id
+		errors.add :ad_type_id, "must be valid" unless !(AdType.find(self.ad_type_id) rescue nil).nil?
+	end
+
+	def valid_bid_type_id
+		errors.add :bid_type_id, "must be valid" unless !(BidType.find(self.bid_type_id) rescue nil).nil?
 	end
 
 	def daily_totals(start_offset = 30, end_offset = 0)

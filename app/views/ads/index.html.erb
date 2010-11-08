@@ -6,7 +6,8 @@
 			<th>Ad Group</th>
 			<th>Ad Type</th>
 			<th>Title</th>
-			<th>Destination URL</th>
+			<th>Bid Type</th>
+			<th>Bid</th>
 			<th>Enabled?</th>
 			<th class="action"></th>
 		</tr>
@@ -18,7 +19,8 @@
 				<td><%= ad.ad_group.name %></td>
 				<td><%= ad.ad_type.label %></td>
 				<td><%= ad.title %></td>
-				<td><%= ad.destination_url %></td>
+				<td><%= ad.bid_type.name %></td>
+				<td><%= "%04.2f" % ad.bid %></td>
 				<td><%= ad.enabled ? "Yes" : "No" %></td>
 				<td class="actions">
 					<%= link_to 'Show', ad %>
