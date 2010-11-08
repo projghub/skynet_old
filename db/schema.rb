@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101108213926) do
+ActiveRecord::Schema.define(:version => 20101108225918) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name",       :null => false
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20101108213926) do
     t.string   "hash",                                                         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "spent",        :precision => 10, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "spent",        :precision => 13, :scale => 5, :default => 0.0, :null => false
   end
 
   add_index "serving_stats", ["ad_id"], :name => "ad_id_index"

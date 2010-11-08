@@ -44,7 +44,7 @@ class ReportsController < AuthenticateController
 
 	def by_campaigns
 		@campaigns = Campaign\
-			.select("campaigns.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks")\
+			.select("campaigns.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks, sum(serving_stats.spent) spent")\
 			.joins(:ad_groups => {:ads => :serving_stats})\
 			.where(
 				"ads.deleted_at is null and campaigns.account_id = ? and serving_stats.time_served >= ? and serving_stats.time_served <= ?",
@@ -59,7 +59,7 @@ class ReportsController < AuthenticateController
 
 	def by_ad_groups
 		@ad_groups = AdGroup\
-			.select("ad_groups.*, campaigns.enabled as campaign_enabled, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks")\
+			.select("ad_groups.*, campaigns.enabled as campaign_enabled, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks, sum(serving_stats.spent) spent")\
 			.joins(:ads => :serving_stats, :campaign => {})\
 			.where(
 				"ads.deleted_at is null and campaigns.account_id = ? and serving_stats.time_served >= ? and serving_stats.time_served <= ?",
@@ -74,7 +74,7 @@ class ReportsController < AuthenticateController
 
 	def by_ads
 		@ads = Ad\
-			.select("ads.*, campaigns.enabled as campaign_enabled, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks")\
+			.select("ads.*, campaigns.enabled as campaign_enabled, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks, sum(serving_stats.spent) spent")\
 			.joins(:serving_stats => {}, :ad_group => :campaign)\
 			.where(
 				"campaigns.account_id = ? and serving_stats.time_served >= ? and serving_stats.time_served <= ?",
@@ -89,7 +89,7 @@ class ReportsController < AuthenticateController
 
 	def by_publishers
 		@publishers = Publisher\
-			.select("publishers.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks")\
+			.select("publishers.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks, sum(serving_stats.spent) spent")\
 			.joins(:serving_stats => {:ad => {:ad_group => :campaign}})\
 			.where(
 				"ads.deleted_at is null and campaigns.deleted_at is null and campaigns.account_id = ? and serving_stats.time_served >= ? and serving_stats.time_served <= ?",
@@ -104,7 +104,7 @@ class ReportsController < AuthenticateController
 
 	def by_templates
 		@templates = Template\
-			.select("templates.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks")\
+			.select("templates.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks, sum(serving_stats.spent) spent")\
 			.joins(:serving_stats => {:ad => {:ad_group => :campaign}})\
 			.where(
 				"ads.deleted_at is null and campaigns.deleted_at is null and campaigns.account_id = ? and serving_stats.time_served >= ? and serving_stats.time_served <= ?",
@@ -119,7 +119,7 @@ class ReportsController < AuthenticateController
 
 	def by_ad_types
 		@ad_types = AdType\
-			.select("ad_types.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks")\
+			.select("ad_types.*, sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks, sum(serving_stats.spent) spent")\
 			.joins(:templates => {:serving_stats => {:ad => {:ad_group => :campaign}}})\
 			.where(
 				"ads.deleted_at is null and campaigns.deleted_at is null and campaigns.account_id = ? and serving_stats.time_served >= ? and serving_stats.time_served <= ?",
