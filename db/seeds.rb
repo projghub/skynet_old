@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+BidType.create(:name => "cpm", :label => "Cost Per Thousand Impressions")
 display_468x60 = AdType.create(:name => "display_468x60", :label => "Banner")
 display_728x90 = AdType.create(:name => "display_728x90", :label => "Leaderboard")
 display_250x250 = AdType.create(:name => "display_250x250", :label => "Square")
