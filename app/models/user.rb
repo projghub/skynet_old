@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 	end
 
 	def self.hash_password_and_salt(password, salt)
-		Digest::SHA1.hexdigest(salt+password)
+		Digest::SHA1.hexdigest(salt+(password.nil? ? "" : password))
 	end
 
 	def valid_not_current_user

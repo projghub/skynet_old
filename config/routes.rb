@@ -1,7 +1,4 @@
 Ror::Application.routes.draw do
-
-  resources :templates
-
 	match "/serve" => "serve#index"
 	match "/javascripts/serve.js" => "serve#js"
 	match "/click" => "click#index"
@@ -15,11 +12,14 @@ Ror::Application.routes.draw do
 	resources :campaigns
 	resources :ad_groups
 	resources :ads
+	resources :templates
 	match "/account" => "account#edit"
 	match "/account/update" => "account#update"
 	match "/templates/:id/preview/:ad_id" => "templates#preview"
 	match "/reports" => "reports#index"
 	match "/reports/:action" => "reports"
+
+	match "/api/stats" => "api::Stats#index"
 
 	# The priority is based upon order of creation:
 	# first created -> highest priority.
