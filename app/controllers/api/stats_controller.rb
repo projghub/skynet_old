@@ -4,8 +4,10 @@ class Api::StatsController < ApplicationController
 	layout false
 
 	def index
+		@start_time = Time.at((Time.parse(params[:start_date] || Time.now.strftime("%Y-%m-%d")).getutc.to_i / 86400) * 86400)
+		@end_time = Time.at((((params[:end_date].nil? ? @start_time : Time.parse(params[:end_date])).getutc.to_i / 86400) * 86400) + 86399)
 		@passed_groups = params[:groups].nil? ? [] : params[:groups].split(",")
-		q = ServingStat.select("sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks, sum(serving_stats.spent) spent, serving_stats.time_served").joins(:ad => {:ad_group => :campaign}).where("campaigns.account_id = ?", @user.account_id).group("serving_stats.time_served div 86400").order("time_served")
+		q = ServingStat.select("sum(serving_stats.impressions) impressions, sum(serving_stats.clicks) clicks, sum(serving_stats.spent) spent, serving_stats.time_served").joins(:ad => {:ad_group => :campaign}).where("campaigns.account_id = ? and serving_stats.time_served >= ? and serving_stats.time_served <= ?", @user.account_id, @start_time.to_i, @end_time.to_i).group("serving_stats.time_served div 86400").order("time_served")
 		q = q.select("campaigns.id campaign_id, serving_stats.ad_id").group("campaigns.id").where("ads.deleted_at is null and campaigns.deleted_at is null").order("campaigns.id") if @passed_groups.include?("campaign")
 		q = q.select("serving_stats.ad_id").group("serving_stats.ad_id").where("ads.deleted_at is null").order("serving_stats.ad_id") if @passed_groups.include?("ad")
 		q = q.select("serving_stats.template_id").joins(:template).group("serving_stats.template_id").order("serving_stats.template_id") if @passed_groups.include?("template")
