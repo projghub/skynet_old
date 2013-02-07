@@ -1,9 +1,7 @@
 class AddAdsMediaUrl < ActiveRecord::Migration
-	def self.up
-		add_column :ads, :media_url, :string, :null => false
+	def up
 	end
 
-	def self.down
-		remove_column :ads, :media_url
+	def down
 	end
 end

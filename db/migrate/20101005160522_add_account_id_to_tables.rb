@@ -1,10 +1,9 @@
 class AddAccountIdToTables < ActiveRecord::Migration
-	def self.up
-		add_column :campaigns, :account_id, :integer, :null => false
-		add_index :campaigns, [:account_id]
+	def up
+		add_column :campaigns, :account_id, :integer
 	end
 
-	def self.down
+	def down
 		remove_column :campaigns, :account_id
 	end
 end
